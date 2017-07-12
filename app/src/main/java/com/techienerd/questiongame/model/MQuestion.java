@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class MQuestion {
     private int id;
     private String ques;
-    private ArrayList<Model>list;
+    private ArrayList<MOption>list;
 
     public int getId() {
         return id;
@@ -26,11 +26,11 @@ public class MQuestion {
         this.ques = ques;
     }
 
-    public ArrayList<Model> getList() {
+    public ArrayList<MOption> getList() {
         return list;
     }
 
-    public void setList(ArrayList<Model> list) {
+    public void setList(ArrayList<MOption> list) {
         this.list = list;
     }
 }

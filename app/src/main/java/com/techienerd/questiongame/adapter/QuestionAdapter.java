@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.activity.MainActivity;
-import com.techienerd.questiongame.model.Model;
+import com.techienerd.questiongame.model.MOption;
 
 import java.util.ArrayList;
 
@@ -20,8 +20,8 @@ import java.util.ArrayList;
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyViewHolder> {
     private Context context;
     private LayoutInflater inflater;
-    private ArrayList<Model> mItems;
-    private Model mItem;
+    private ArrayList<MOption> mItems;
+    private MOption mItem;
     public static int wa, ca;
 
 
@@ -31,7 +31,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         inflater = LayoutInflater.from(context);
     }
 
-    public void setData(ArrayList<Model> mItems) {
+    public void setData(ArrayList<MOption> mItems) {
         this.mItems = mItems;
         notifyDataSetChanged();
     }
@@ -72,12 +72,12 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                         ca++;
                         MainActivity.getInstance().setCount(ca +" : "+wa);
                         Toast.makeText(context, "Correct", Toast.LENGTH_SHORT).show();
-                        itemView.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                MainActivity.getInstance().prepareDisplay();
-                            }
-                        }, 2000);
+//                        itemView.postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                MainActivity.getInstance().prepareDisplay();
+//                            }
+//                        }, 2000);
                     } else {
                         wa++;
                         MainActivity.getInstance().setCount(ca +" : "+wa);

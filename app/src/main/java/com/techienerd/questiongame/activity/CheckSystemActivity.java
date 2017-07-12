@@ -1,7 +1,7 @@
 package com.techienerd.questiongame.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,13 +11,15 @@ import android.widget.Toast;
 
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.adapter.QuestionAdapter;
-import com.techienerd.questiongame.model.MQuestion;
 import com.techienerd.questiongame.model.MOption;
+import com.techienerd.questiongame.model.MQuestion;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    RecyclerView recyclerView;
+/**
+ * Created by Nayan on 7/12/2017.
+ */
+public class CheckSystemActivity extends AppCompatActivity implements View.OnClickListener {
     ArrayList<MOption> optionArrayList;
     ArrayList<MQuestion> questionArrayList;
     MQuestion mQuestion;
@@ -26,10 +28,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnNext;
     private int pos;
     private TextView txtQues;
-    QuestionAdapter adapter;
-    private static MainActivity instance;
 
-    public static MainActivity getInstance() {
+    private static CheckSystemActivity instance;
+
+    public static CheckSystemActivity getInstance() {
 
         return instance;
     }
@@ -49,12 +51,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnNext = (Button) findViewById(R.id.btnNext);
         btnNext.setOnClickListener(this);
         txtQues = (TextView) findViewById(R.id.tct);
-        recyclerView = (RecyclerView) findViewById(R.id.rec);
         mOption = new MOption();
         mQuestion = new MQuestion();
         optionArrayList = new ArrayList<>();
         questionArrayList = new ArrayList<>();
-        adapter = new QuestionAdapter(this);
+
     }
 
     public void prepareDisplay() {
@@ -64,13 +65,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return;
         } else {
             txtQues.setText(questionArrayList.get(pos).getQues());
-            adapter.setData(questionArrayList.get(pos).getList());
             pos++;
         }
 //        txtCount.setText(QuestionAdapter.ca + " : " + QuestionAdapter.wa);
-        adapter.notifyDataSetChanged();
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerView.setAdapter(adapter);
     }
 
     public void setCount(CharSequence text) {

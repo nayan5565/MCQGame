@@ -3,7 +3,7 @@ package com.techienerd.questiongame.model;
 /**
  * Created by Nayan on 7/12/2017.
  */
-public class Model {
+public class MOption {
     private int id,item,tag;
 
     public int getId() {
