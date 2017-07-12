@@ -34,7 +34,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        instance = this;
         init();
+        generate();
+        prepareDisplay();
     }
 
     private void init() {
@@ -54,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         } else {
             txtQues.setText(questionArrayList.get(pos).getQues());
-            Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
             adapter.setData(questionArrayList.get(pos).getList());
             pos++;
         }
