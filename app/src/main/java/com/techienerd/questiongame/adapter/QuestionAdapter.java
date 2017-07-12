@@ -22,7 +22,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     private LayoutInflater inflater;
     private ArrayList<Model> mItems;
     private Model mItem;
-    public static int wa,ca;
+    public static int wa, ca;
 
 
     public QuestionAdapter(Context context) {
@@ -33,6 +33,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
 
     public void setData(ArrayList<Model> mItems) {
         this.mItems = mItems;
+        notifyDataSetChanged();
+    }
+    public void notifyData(){
         notifyDataSetChanged();
     }
 
@@ -67,6 +70,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                     mItem = mItems.get(getAdapterPosition());
                     if (mItem.getTag() == 1) {
                         ca++;
+                        MainActivity.getInstance().setCount(ca +" : "+wa);
                         Toast.makeText(context, "Correct", Toast.LENGTH_SHORT).show();
                         itemView.postDelayed(new Runnable() {
                             @Override
@@ -74,9 +78,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                                 MainActivity.getInstance().prepareDisplay();
                             }
                         }, 2000);
-                    }
-                    else {
+                    } else {
                         wa++;
+                        MainActivity.getInstance().setCount(ca +" : "+wa);
+//                        MainActivity.getInstance().setCount(wa + "");
                         Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT).show();
                     }
                 }

@@ -68,9 +68,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             adapter.setData(questionArrayList.get(pos).getList());
             pos++;
         }
-        txtCount.setText(QuestionAdapter.wa + " : " + QuestionAdapter.ca);
+//        txtCount.setText(QuestionAdapter.ca + " : " + QuestionAdapter.wa);
+        adapter.notifyDataSetChanged();
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
+    }
+
+    public void setCount(CharSequence text) {
+        txtCount.setText(text);
     }
 
     private void generate() {
