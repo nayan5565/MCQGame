@@ -2,6 +2,7 @@ package com.techienerd.questiongame.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             adapter.setData(questionArrayList.get(pos).getList());
             pos++;
         }
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
         recyclerView.setAdapter(adapter);
     }
 
