@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techienerd.questiongame.R;
+import com.techienerd.questiongame.activity.MainActivity;
 import com.techienerd.questiongame.model.Model;
 
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                         itemView.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-//                                MathLevel_1Activity.getInstance().preParedisplay();
+                                MainActivity.getInstance().prepareDisplay();
                             }
                         }, 2000);
                     }

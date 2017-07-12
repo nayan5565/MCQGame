@@ -2,6 +2,7 @@ package com.techienerd.questiongame.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,12 @@ public class MainActivity extends AppCompatActivity {
     private int pos;
     private TextView txtQues;
     QuestionAdapter adapter;
+    private static MainActivity instance;
+
+    public static MainActivity getInstance() {
+
+        return instance;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         mQuestion = new MQuestion();
         models = new ArrayList<>();
         questionArrayList = new ArrayList<>();
-        adapter=new QuestionAdapter(this);
+        adapter = new QuestionAdapter(this);
     }
 
     public void prepareDisplay() {
@@ -48,8 +55,11 @@ public class MainActivity extends AppCompatActivity {
         } else {
             txtQues.setText(questionArrayList.get(pos).getQues());
             Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
+            adapter.setData(questionArrayList.get(pos).getList());
             pos++;
         }
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
     }
 
     private void generate() {
