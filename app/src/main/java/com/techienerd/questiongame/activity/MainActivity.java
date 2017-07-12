@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,12 +17,14 @@ import com.techienerd.questiongame.model.Model;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     ArrayList<Model> models;
     ArrayList<MQuestion> questionArrayList;
     MQuestion mQuestion;
     Model model;
+    private TextView txtCount;
+    private Button btnNext;
     private int pos;
     private TextView txtQues;
     QuestionAdapter adapter;
@@ -42,6 +46,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void init() {
+        txtCount = (TextView) findViewById(R.id.txtCount);
+        btnNext = (Button) findViewById(R.id.btnNext);
+        btnNext.setOnClickListener(this);
         txtQues = (TextView) findViewById(R.id.tct);
         recyclerView = (RecyclerView) findViewById(R.id.rec);
         model = new Model();
@@ -61,7 +68,8 @@ public class MainActivity extends AppCompatActivity {
             adapter.setData(questionArrayList.get(pos).getList());
             pos++;
         }
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        txtCount.setText(QuestionAdapter.wa + " : " + QuestionAdapter.ca);
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
     }
 
@@ -76,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         models.add(model);
 
         model = new Model();
-        model.setItem(4);
+        model.setItem(7);
         model.setTag(0);
 
         models.add(model);
@@ -224,6 +232,11 @@ public class MainActivity extends AppCompatActivity {
 
         questionArrayList.add(mQuestion);
 
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

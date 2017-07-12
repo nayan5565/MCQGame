@@ -22,6 +22,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     private LayoutInflater inflater;
     private ArrayList<Model> mItems;
     private Model mItem;
+    public static int wa,ca;
+
 
     public QuestionAdapter(Context context) {
         this.context = context;
@@ -64,6 +66,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                 public void onClick(View v) {
                     mItem = mItems.get(getAdapterPosition());
                     if (mItem.getTag() == 1) {
+                        ca++;
                         Toast.makeText(context, "Correct", Toast.LENGTH_SHORT).show();
                         itemView.postDelayed(new Runnable() {
                             @Override
@@ -71,6 +74,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                                 MainActivity.getInstance().prepareDisplay();
                             }
                         }, 2000);
+                    }
+                    else {
+                        wa++;
+                        Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
