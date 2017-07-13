@@ -4,7 +4,8 @@ package com.techienerd.questiongame.model;
  * Created by Nayan on 7/12/2017.
  */
 public class MOption {
-    private int id,item,tag;
+    private int id, tag;
+    private String item;
 
     public int getId() {
         return id;
@@ -14,11 +15,11 @@ public class MOption {
         this.id = id;
     }
 
-    public int getItem() {
+    public String getItem() {
         return item;
     }
 
-    public void setItem(int item) {
+    public void setItem(String item) {
         this.item = item;
     }
 

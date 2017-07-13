@@ -34,19 +34,13 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private CheckBox ch1, ch2, ch3, ch4;
     private boolean isTrue;
     LinearLayout layOption;
+    private int correct,wrong;
 
-    private static CheckSystemActivity instance;
-
-    public static CheckSystemActivity getInstance() {
-
-        return instance;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.check_system_activity);
-        instance = this;
         init();
         generate();
         prepareDisplay();
@@ -91,7 +85,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     void prepareOptionView(){
         layOption.removeAllViews();
         for (int i=0;i<questionArrayList.get(pos).getList().size();i++){
-            addCheckbox(questionArrayList.get(pos).getList().get(i).getItem()+"",i);
+            addCheckbox(questionArrayList.get(pos).getList().get(i).getItem(),i);
         }
 
     }
@@ -112,28 +106,28 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
 
-        mQuestion.setQues("2+2");
+        mQuestion.setQues("2+2=?");
 
         mOption = new MOption();
-        mOption.setItem(2);
+        mOption.setItem("2");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(7);
+        mOption.setItem("7");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(6);
+        mOption.setItem("8");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(4);
+        mOption.setItem("4");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
@@ -149,25 +143,25 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         mQuestion.setQues("5+5=?");
 
         mOption = new MOption();
-        mOption.setItem(10);
+        mOption.setItem("10");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(4);
+        mOption.setItem("9");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(6);
+        mOption.setItem("5");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(8);
+        mOption.setItem("11");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -181,25 +175,25 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         mQuestion = new MQuestion();
         mQuestion.setQues("2+5");
         mOption = new MOption();
-        mOption.setItem(2);
+        mOption.setItem("9");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(7);
+        mOption.setItem("7");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(6);
+        mOption.setItem("5");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(8);
+        mOption.setItem("12");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -214,25 +208,25 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         mQuestion = new MQuestion();
         mQuestion.setQues("7+2");
         mOption = new MOption();
-        mOption.setItem(2);
+        mOption.setItem("5");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(4);
+        mOption.setItem("6");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(9);
+        mOption.setItem("9");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(8);
+        mOption.setItem("10");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -246,25 +240,25 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         mQuestion = new MQuestion();
         mQuestion.setQues("8+2");
         mOption = new MOption();
-        mOption.setItem(2);
+        mOption.setItem("16");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(4);
+        mOption.setItem("12");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(6);
+        mOption.setItem("11");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem(10);
+        mOption.setItem("10");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
@@ -284,8 +278,10 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onClick(View v) {
                 if (questionArrayList.get(pos).getList().get(id).getTag() == 1) {
+                    correct++;
                     Toast.makeText(CheckSystemActivity.this, "correct", Toast.LENGTH_SHORT).show();
                 } else {
+                    wrong++;
                     Toast.makeText(CheckSystemActivity.this, "wrong", Toast.LENGTH_SHORT).show();
                 }
                 for (int i = 0; i < layOption.getChildCount(); i++) {
