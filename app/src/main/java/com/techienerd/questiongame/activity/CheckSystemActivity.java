@@ -34,7 +34,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private CheckBox ch1, ch2, ch3, ch4;
     private boolean isTrue;
     LinearLayout layOption;
-    private int correct,wrong;
+    private int correct, wrong;
 
 
     @Override
@@ -66,7 +66,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //        optionArrayList = new ArrayList<>();
         questionArrayList = new ArrayList<>();
 
-        layOption= (LinearLayout) findViewById(R.id.layOption);
+        layOption = (LinearLayout) findViewById(R.id.layOption);
 
     }
 
@@ -79,16 +79,17 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             txtQues.setText(questionArrayList.get(pos).getQues());
 
         }
-//        txtCount.setText(QuestionAdapter.ca + " : " + QuestionAdapter.wa);
+//
     }
 
-    void prepareOptionView(){
+    void prepareOptionView() {
         layOption.removeAllViews();
-        for (int i=0;i<questionArrayList.get(pos).getList().size();i++){
-            addCheckbox(questionArrayList.get(pos).getList().get(i).getItem(),i);
+        for (int i = 0; i < questionArrayList.get(pos).getList().size(); i++) {
+            addCheckbox(questionArrayList.get(pos).getList().get(i).getItem(), i);
         }
 
     }
+
     public void setOptionWithCheckBox() {
         ch1.setText(questionArrayList.get(pos).getList().get(0).getItem() + "");
         ch2.setText(questionArrayList.get(pos).getList().get(1).getItem() + "");
@@ -270,9 +271,9 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
     }
 
-    void addCheckbox(String text, final int id){
+    public void addCheckbox(String text, final int id) {
 
-        CheckBox checkBox=new CheckBox(this);
+        CheckBox checkBox = new CheckBox(this);
         checkBox.setText(text);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -287,7 +288,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                 for (int i = 0; i < layOption.getChildCount(); i++) {
                     layOption.getChildAt(i).setClickable(false);
                 }
-
+                txtCount.setText(correct + " : " + wrong);
 
             }
         });
@@ -298,7 +299,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        int cId=v.getId();
+        int cId = v.getId();
         if (v.getId() == R.id.btnNext) {
             pos++;
 
@@ -321,7 +322,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //            isTrue=false;
 
         }
-        Log.e("TEST",cId+"");
+        Log.e("TEST", cId + "");
 //        if (cId == 100) {
 //            isTrue = true;
 //            if (questionArrayList.get(pos).getList().get(0).getTag() == 1) {
@@ -360,8 +361,6 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //             findViewById(101).setClickable(false);
 //             findViewById(102).setClickable(false);
 //             findViewById(103).setClickable(false);
-
-
 
 
     }
