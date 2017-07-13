@@ -282,7 +282,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             @Override
             public void onClick(View v) {
                 isTrue = true;
-                btnNext.setBackgroundColor(0x00000000);
+                btnNext.setBackgroundColor(0xff00ff00);
                 if (questionArrayList.get(pos).getList().get(id).getTag() == 1) {
                     correct++;
                     Toast.makeText(CheckSystemActivity.this, "correct", Toast.LENGTH_SHORT).show();
