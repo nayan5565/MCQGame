@@ -5,7 +5,7 @@ package com.techienerd.questiongame.model;
  */
 public class MOption {
     private int id, tag;
-    private String item;
+    private String option;
 
     public int getId() {
         return id;
@@ -15,12 +15,12 @@ public class MOption {
         this.id = id;
     }
 
-    public String getItem() {
-        return item;
+    public String getOption() {
+        return option;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public void setOption(String option) {
+        this.option = option;
     }
 
     public int getTag() {

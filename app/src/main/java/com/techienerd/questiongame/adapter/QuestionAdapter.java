@@ -49,7 +49,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         mItem = mItems.get(position);
-        holder.textView.setText(mItem.getItem() + "");
+        holder.textView.setText(mItem.getOption() + "");
 
     }
 

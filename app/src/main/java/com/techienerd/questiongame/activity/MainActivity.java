@@ -85,25 +85,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQuestion.setQues("2+2=?");
 
         mOption = new MOption();
-        mOption.setItem("2");
+        mOption.setOption("2");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("7");
+        mOption.setOption("7");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("8");
+        mOption.setOption("8");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("4");
+        mOption.setOption("4");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
@@ -119,25 +119,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQuestion.setQues("5+5=?");
 
         mOption = new MOption();
-        mOption.setItem("10");
+        mOption.setOption("10");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("9");
+        mOption.setOption("9");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("5");
+        mOption.setOption("5");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("11");
+        mOption.setOption("11");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -151,25 +151,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQuestion = new MQuestion();
         mQuestion.setQues("2+5");
         mOption = new MOption();
-        mOption.setItem("9");
+        mOption.setOption("9");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("7");
+        mOption.setOption("7");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("5");
+        mOption.setOption("5");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("12");
+        mOption.setOption("12");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -184,25 +184,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQuestion = new MQuestion();
         mQuestion.setQues("7+2");
         mOption = new MOption();
-        mOption.setItem("5");
+        mOption.setOption("5");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("6");
+        mOption.setOption("6");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("9");
+        mOption.setOption("9");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("10");
+        mOption.setOption("10");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -216,25 +216,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQuestion = new MQuestion();
         mQuestion.setQues("8+2");
         mOption = new MOption();
-        mOption.setItem("16");
+        mOption.setOption("16");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("12");
+        mOption.setOption("12");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("11");
+        mOption.setOption("11");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setItem("10");
+        mOption.setOption("10");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
