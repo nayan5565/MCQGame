@@ -49,7 +49,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         Collections.shuffle(questionArrayList);
         prepareDisplay();
 //        setOptionWithCheckBox();
-        prepareOptionView();
+//        prepareOptionView();
 
     }
 
@@ -82,6 +82,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
     public void prepareDisplay() {
         if (pos >= questionArrayList.size()) {
+            Log.e("step","one");
             Toast.makeText(this, "level completed", Toast.LENGTH_SHORT).show();
             final Dialog dialog = new Dialog(this);
             dialog.setCancelable(false);
@@ -89,20 +90,31 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             dialog.setContentView(R.layout.dia_game_over);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             Button btnOk = (Button) dialog.findViewById(R.id.btnOK);
-            TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
+            final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
             int score = correct * (100 / questionArrayList.size());
             txtMark.setText("Congratulation!Your score is " + score + " out of 100");
             btnOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    correct = 0;
+                    wrong = 0;
+                    txtCount.setText(correct + " : " + wrong);
+                    Collections.shuffle(questionArrayList);
+                    prepareDisplay();
                     dialog.dismiss();
                 }
             });
             dialog.show();
+//            layOption.removeAllViews();
             pos = 0;
             return;
         } else {
+            Log.e("step","two");
             txtQues.setText(questionArrayList.get(pos).getQues());
+            layOption.removeAllViews();
+            for (int i = 0; i < questionArrayList.get(pos).getList().size(); i++) {
+                addCheckbox(questionArrayList.get(pos).getList().get(i).getOption(), i);
+            }
 
         }
 //
@@ -323,7 +335,9 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-
+//        if (pos > questionArrayList.size()) {
+//            return;
+//        }
         layOption.addView(checkBox);
     }
 
@@ -337,7 +351,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             pos++;
             isTrue = false;
             prepareDisplay();
-            prepareOptionView();
+//            prepareOptionView();
             for (int i = 0; i < layOption.getChildCount(); i++) {
                 layOption.getChildAt(i).setClickable(true);
             }
