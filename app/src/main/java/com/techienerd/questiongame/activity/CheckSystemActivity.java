@@ -1,9 +1,13 @@
 package com.techienerd.questiongame.activity;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -15,6 +19,7 @@ import com.techienerd.questiongame.model.MOption;
 import com.techienerd.questiongame.model.MQuestion;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Nayan on 7/12/2017.
@@ -41,9 +46,11 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         init();
         changeButtonColor();
         generate();
+        Collections.shuffle(questionArrayList);
         prepareDisplay();
 //        setOptionWithCheckBox();
         prepareOptionView();
+
     }
 
     private void init() {
@@ -62,13 +69,13 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         mOption = new MOption();
         mQuestion = new MQuestion();
 //        optionArrayList = new ArrayList<>();
-        questionArrayList = new ArrayList<>();
+//        questionArrayList = new ArrayList<>();
 
         layOption = (LinearLayout) findViewById(R.id.layOption);
 
     }
 
-    public void changeButtonColor(){
+    public void changeButtonColor() {
         if (!isTrue)
             btnNext.setBackgroundColor(0xffff0000);
     }
@@ -76,6 +83,19 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     public void prepareDisplay() {
         if (pos >= questionArrayList.size()) {
             Toast.makeText(this, "level completed", Toast.LENGTH_SHORT).show();
+            final Dialog dialog = new Dialog(this);
+            dialog.setCancelable(false);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dia_game_over);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            Button btnOk = (Button) dialog.findViewById(R.id.btnOK);
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
             pos = 0;
             return;
         } else {
@@ -285,9 +305,11 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                 btnNext.setBackgroundColor(0xff00ff00);
                 if (questionArrayList.get(pos).getList().get(id).getTag() == 1) {
                     correct++;
+//                    txtCount.setTextColor(0xff00ff00);
                     Toast.makeText(CheckSystemActivity.this, "correct", Toast.LENGTH_SHORT).show();
                 } else {
                     wrong++;
+//                    txtCount.setTextColor(0xffff0000);
                     Toast.makeText(CheckSystemActivity.this, "wrong", Toast.LENGTH_SHORT).show();
                 }
                 for (int i = 0; i < layOption.getChildCount(); i++) {
