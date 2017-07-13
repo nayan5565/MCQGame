@@ -89,6 +89,9 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             dialog.setContentView(R.layout.dia_game_over);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             Button btnOk = (Button) dialog.findViewById(R.id.btnOK);
+            TextView txtMark = (TextView) dialog.findViewById(R.id.txtMark);
+            int mark = correct * 20;
+            txtMark.setText("Congratulation!Your score is "+mark+" out of 100");
             btnOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -259,7 +262,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
 
         questionArrayList.add(mQuestion);
-
+//5
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
         mQuestion.setQues("8+2=?");
