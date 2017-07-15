@@ -78,6 +78,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                 public void onClick(View v) {
                     mAllQuestion = allQuestionArrayList.get(getAdapterPosition());
                     Intent intent = new Intent(context, CheckSystemActivity.class);
+                    intent.putExtra("index", getAdapterPosition());
                     context.startActivity(intent);
 //                    mItem = mItems.get(getAdapterPosition());
 //                    if (mItem.getTag() == 1) {
