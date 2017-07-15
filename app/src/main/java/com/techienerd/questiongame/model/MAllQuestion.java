@@ -8,6 +8,15 @@ import java.util.ArrayList;
 public class MAllQuestion {
     private int id;
     private ArrayList<MQuestion>questionArrayList;
+    private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public int getId() {
         return id;

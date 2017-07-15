@@ -1,6 +1,7 @@
 package com.techienerd.questiongame.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techienerd.questiongame.R;
+import com.techienerd.questiongame.activity.CheckSystemActivity;
 import com.techienerd.questiongame.activity.MainActivity;
+import com.techienerd.questiongame.model.MAllQuestion;
 import com.techienerd.questiongame.model.MOption;
 
 import java.util.ArrayList;
@@ -21,13 +24,16 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     private Context context;
     private LayoutInflater inflater;
     private ArrayList<MOption> mItems;
+    private ArrayList<MAllQuestion> allQuestionArrayList;
+    private MAllQuestion mAllQuestion;
     private MOption mItem;
     public static int wa, ca;
 
 
     public QuestionAdapter(Context context) {
         this.context = context;
-        mItems = new ArrayList<>();
+//        mItems = new ArrayList<>();
+        allQuestionArrayList = new ArrayList<>();
         inflater = LayoutInflater.from(context);
     }
 
@@ -35,7 +41,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         this.mItems = mItems;
         notifyDataSetChanged();
     }
-    public void notifyData(){
+
+    public void setQues(ArrayList<MAllQuestion> allQuestionArrayList) {
+        this.allQuestionArrayList = allQuestionArrayList;
         notifyDataSetChanged();
     }
 
@@ -48,14 +56,15 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        mItem = mItems.get(position);
-        holder.textView.setText(mItem.getOption() + "");
+//        mItem = mItems.get(position);
+        mAllQuestion = allQuestionArrayList.get(position);
+        holder.textView.setText(mAllQuestion.getType());
 
     }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return allQuestionArrayList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -67,23 +76,26 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mItem = mItems.get(getAdapterPosition());
-                    if (mItem.getTag() == 1) {
-                        ca++;
-                        MainActivity.getInstance().setCount(ca +" : "+wa);
-                        Toast.makeText(context, "Correct", Toast.LENGTH_SHORT).show();
-//                        itemView.postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
-//                                MainActivity.getInstance().prepareDisplay();
-//                            }
-//                        }, 2000);
-                    } else {
-                        wa++;
-                        MainActivity.getInstance().setCount(ca +" : "+wa);
-//                        MainActivity.getInstance().setCount(wa + "");
-                        Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT).show();
-                    }
+                    mAllQuestion = allQuestionArrayList.get(getAdapterPosition());
+                    Intent intent = new Intent(context, CheckSystemActivity.class);
+                    context.startActivity(intent);
+//                    mItem = mItems.get(getAdapterPosition());
+//                    if (mItem.getTag() == 1) {
+//                        ca++;
+//                        MainActivity.getInstance().setCount(ca + " : " + wa);
+//                        Toast.makeText(context, "Correct", Toast.LENGTH_SHORT).show();
+////                        itemView.postDelayed(new Runnable() {
+////                            @Override
+////                            public void run() {
+////                                MainActivity.getInstance().prepareDisplay();
+////                            }
+////                        }, 2000);
+//                    } else {
+//                        wa++;
+//                        MainActivity.getInstance().setCount(ca + " : " + wa);
+////                        MainActivity.getInstance().setCount(wa + "");
+//                        Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT).show();
+//                    }
                 }
             });
         }

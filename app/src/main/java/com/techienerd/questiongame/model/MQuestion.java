@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class MQuestion {
     private int id;
     private String ques;
-    private ArrayList<MOption>list;
+    private ArrayList<MOption> optionArrayList;
 
     public int getId() {
         return id;
@@ -26,11 +26,11 @@ public class MQuestion {
         this.ques = ques;
     }
 
-    public ArrayList<MOption> getList() {
-        return list;
+    public ArrayList<MOption> getOptionArrayList() {
+        return optionArrayList;
     }
 
-    public void setList(ArrayList<MOption> list) {
-        this.list = list;
+    public void setOptionArrayList(ArrayList<MOption> optionArrayList) {
+        this.optionArrayList = optionArrayList;
     }
 }

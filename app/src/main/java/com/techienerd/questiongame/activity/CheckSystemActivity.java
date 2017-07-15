@@ -38,8 +38,9 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private TextView txtQues;
     private CheckBox ch1, ch2, ch3, ch4;
     private boolean isTrue;
-    LinearLayout layOption;
+    private LinearLayout layOption;
     private int correct, wrong;
+//    private QuestionAdapter adapter;
 
 
     @Override
@@ -48,8 +49,8 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.check_system_activity);
         init();
         changeButtonColor();
-        generate();
-        Collections.shuffle(questionArrayList);
+//        generate();
+//        Collections.shuffle(questionArrayList);
         prepareDisplay();
 //        setOptionWithCheckBox();
 //        prepareOptionView();
@@ -71,8 +72,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         txtQues = (TextView) findViewById(R.id.tct);
         mOption = new MOption();
         mQuestion = new MQuestion();
-//        optionArrayList = new ArrayList<>();
-//        questionArrayList = new ArrayList<>();
+//        adapter = new QuestionAdapter(this);
 
         layOption = (LinearLayout) findViewById(R.id.layOption);
 
@@ -84,7 +84,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void prepareDisplay() {
-        if (pos >= questionArrayList.size()) {
+        if (pos >= MainActivity.getInstance().allQuestionArrayList.get(0).getQuestionArrayList().size()) {
             Log.e("step", "one");
             Toast.makeText(this, "level completed", Toast.LENGTH_SHORT).show();
             final Dialog dialog = new Dialog(this);
@@ -113,10 +113,10 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             return;
         } else {
             Log.e("step", "two");
-            txtQues.setText(questionArrayList.get(pos).getQues());
+            txtQues.setText(MainActivity.getInstance().allQuestionArrayList.get(0).getQuestionArrayList().get(pos).getQues());
             layOption.removeAllViews();
-            for (int i = 0; i < questionArrayList.get(pos).getList().size(); i++) {
-                addCheckbox(questionArrayList.get(pos).getList().get(i).getOption(), i);
+            for (int i = 0; i < MainActivity.getInstance().allQuestionArrayList.get(0).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
+                addCheckbox(MainActivity.getInstance().allQuestionArrayList.get(0).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getOption(), i);
             }
 
         }
@@ -125,17 +125,17 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
     void prepareOptionView() {
         layOption.removeAllViews();
-        for (int i = 0; i < questionArrayList.get(pos).getList().size(); i++) {
-            addCheckbox(questionArrayList.get(pos).getList().get(i).getOption(), i);
+        for (int i = 0; i < questionArrayList.get(pos).getOptionArrayList().size(); i++) {
+            addCheckbox(questionArrayList.get(pos).getOptionArrayList().get(i).getOption(), i);
         }
 
     }
 
     public void setOptionWithCheckBox() {
-        ch1.setText(questionArrayList.get(pos).getList().get(0).getOption() + "");
-        ch2.setText(questionArrayList.get(pos).getList().get(1).getOption() + "");
-        ch3.setText(questionArrayList.get(pos).getList().get(2).getOption() + "");
-        ch4.setText(questionArrayList.get(pos).getList().get(3).getOption() + "");
+        ch1.setText(questionArrayList.get(pos).getOptionArrayList().get(0).getOption() + "");
+        ch2.setText(questionArrayList.get(pos).getOptionArrayList().get(1).getOption() + "");
+        ch3.setText(questionArrayList.get(pos).getOptionArrayList().get(2).getOption() + "");
+        ch4.setText(questionArrayList.get(pos).getOptionArrayList().get(3).getOption() + "");
 //            ch1.setText(optionArrayList.get(0).getTag() + "");
 //            ch2.setText(optionArrayList.get(1).getTag() + "");
 //            ch3.setText(optionArrayList.get(2).getTag() + "");
@@ -175,7 +175,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
         questionArrayList.add(mQuestion);
 
@@ -209,7 +209,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
         questionArrayList.add(mQuestion);
 
@@ -241,7 +241,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
 
         questionArrayList.add(mQuestion);
@@ -274,7 +274,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
 
         questionArrayList.add(mQuestion);
@@ -306,15 +306,16 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
         questionArrayList.add(mQuestion);
 
         mAllQuestion = new MAllQuestion();
+        mAllQuestion.setType("ইংরেজি প্রশ্ন ");
         mAllQuestion.setId(1);
         mAllQuestion.setQuestionArrayList(questionArrayList);
 
-                            //2
+        //2
         questionArrayList = new ArrayList<>();
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
@@ -345,7 +346,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
         questionArrayList.add(mQuestion);
 
@@ -379,7 +380,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
         questionArrayList.add(mQuestion);
 
@@ -411,7 +412,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
 
         questionArrayList.add(mQuestion);
@@ -444,7 +445,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
 
         questionArrayList.add(mQuestion);
@@ -476,11 +477,12 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
         optionArrayList.add(mOption);
 
-        mQuestion.setList(optionArrayList);
+        mQuestion.setOptionArrayList(optionArrayList);
 
         questionArrayList.add(mQuestion);
 
         mAllQuestion = new MAllQuestion();
+        mAllQuestion.setType("বাংলা  প্রশ্ন ");
         mAllQuestion.setId(1);
         mAllQuestion.setQuestionArrayList(questionArrayList);
 
@@ -496,7 +498,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             public void onClick(View v) {
                 isTrue = true;
                 btnNext.setBackgroundColor(0xff00ff00);
-                if (questionArrayList.get(pos).getList().get(id).getTag() == 1) {
+                if (MainActivity.getInstance().allQuestionArrayList.get(0).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
                     correct++;
 //                    txtCount.setTextColor(0xff00ff00);
                     Toast.makeText(CheckSystemActivity.this, "correct", Toast.LENGTH_SHORT).show();
@@ -552,7 +554,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //        Log.e("TEST", cId + "");
 //        if (cId == 100) {
 //            isTrue = true;
-//            if (questionArrayList.get(pos).getList().get(0).getTag() == 1) {
+//            if (questionArrayList.get(pos).getOptionArrayList().get(0).getTag() == 1) {
 //                Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
 //            } else {
 //                Toast.makeText(this, "wrong", Toast.LENGTH_SHORT).show();
@@ -560,7 +562,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //        }
 //        if (cId==101) {
 //            isTrue = true;
-//            if (questionArrayList.get(pos).getList().get(1).getTag() == 1) {
+//            if (questionArrayList.get(pos).getOptionArrayList().get(1).getTag() == 1) {
 //                Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
 //            } else {
 //                Toast.makeText(this, "wrong", Toast.LENGTH_SHORT).show();
@@ -568,7 +570,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //        }
 //        if (cId==102) {
 //            isTrue = true;
-//            if (questionArrayList.get(pos).getList().get(2).getTag() == 1) {
+//            if (questionArrayList.get(pos).getOptionArrayList().get(2).getTag() == 1) {
 //                Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
 //            } else {
 //                Toast.makeText(this, "wrong", Toast.LENGTH_SHORT).show();
@@ -576,7 +578,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //        }
 //        if (cId==103) {
 //            isTrue = true;
-//            if (questionArrayList.get(pos).getList().get(3).getTag() == 1) {
+//            if (questionArrayList.get(pos).getOptionArrayList().get(3).getTag() == 1) {
 //                Toast.makeText(this, "correct", Toast.LENGTH_SHORT).show();
 //            } else {
 //                Toast.makeText(this, "wrong", Toast.LENGTH_SHORT).show();
