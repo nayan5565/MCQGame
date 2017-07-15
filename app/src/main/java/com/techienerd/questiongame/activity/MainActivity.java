@@ -271,31 +271,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mQuestion = new MQuestion();
 
         mAllQuestion = new MAllQuestion();
-        mAllQuestion.setType("বাংলা  প্রশ্ন ");
+        mAllQuestion.setType("বাংলা প্রশ্ন");
         mAllQuestion.setId(2);
 
-        mQuestion.setQues("2+2=?");
+        mQuestion.setQues("২+২ =?");
 
         mOption = new MOption();
-        mOption.setOption("2");
+        mOption.setOption("২");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("7");
+        mOption.setOption("৭");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("8");
+        mOption.setOption("৮");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("4");
+        mOption.setOption("৪");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
@@ -308,28 +308,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
-        mQuestion.setQues("5+5=?");
+        mQuestion.setQues("৫+৫=?");
 
         mOption = new MOption();
-        mOption.setOption("10");
+        mOption.setOption("১০");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("9");
+        mOption.setOption("৯");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("5");
+        mOption.setOption("৫");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("11");
+        mOption.setOption("১১");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -341,27 +341,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //3
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
-        mQuestion.setQues("2+5=?");
+        mQuestion.setQues("২+৫=?");
         mOption = new MOption();
-        mOption.setOption("9");
+        mOption.setOption("৯");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("7");
+        mOption.setOption("৭");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("5");
+        mOption.setOption("৫");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("12");
+        mOption.setOption("১২");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -374,27 +374,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //4
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
-        mQuestion.setQues("7+2=?");
+        mQuestion.setQues("৭+২=?");
         mOption = new MOption();
-        mOption.setOption("5");
+        mOption.setOption("৫");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("6");
+        mOption.setOption("৬");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("9");
+        mOption.setOption("৯");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("10");
+        mOption.setOption("১০");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -406,27 +406,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //5
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
-        mQuestion.setQues("8+2=?");
+        mQuestion.setQues("৮+২=?");
         mOption = new MOption();
-        mOption.setOption("16");
+        mOption.setOption("১৬");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("12");
+        mOption.setOption("১২");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("11");
+        mOption.setOption("১১");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("10");
+        mOption.setOption("১০");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
