@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -41,6 +42,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private LinearLayout layOption;
     private int correct, wrong;
     private int index;
+//    SparseBooleanArray checked = listView.getCheckedItemPositions();
 //    private QuestionAdapter adapter;
 
 
@@ -495,7 +497,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
     public void addCheckbox(String text, final int id) {
 
-        CheckBox checkBox = new CheckBox(this);
+        final CheckBox checkBox = new CheckBox(this);
         checkBox.setText(text);
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -503,7 +505,10 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                 isTrue = true;
                 btnNext.setBackgroundColor(0xff00ff00);
                 if (MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
+//                    MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(0).getOption().
                     correct++;
+//                    checkBox.setBackgroundColor(Color.GREEN);
+//                    layOption.getChildAt(0).setBackgroundColor(Color.GREEN);
 //                    txtCount.setTextColor(0xff00ff00);
                     Toast.makeText(CheckSystemActivity.this, "correct", Toast.LENGTH_SHORT).show();
                 } else {
@@ -515,6 +520,11 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                     layOption.getChildAt(i).setClickable(false);
                 }
                 txtCount.setText(correct + " : " + wrong);
+                if (checkBox.isChecked() && MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
+                    checkBox.setBackgroundColor(Color.GREEN);
+                } else {
+                    checkBox.setBackgroundColor(Color.RED);
+                }
 
             }
         });

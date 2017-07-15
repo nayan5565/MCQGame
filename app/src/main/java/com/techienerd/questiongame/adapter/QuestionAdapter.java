@@ -2,6 +2,7 @@ package com.techienerd.questiongame.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     private MAllQuestion mAllQuestion;
     private MOption mItem;
     public static int wa, ca;
+    View view;
 
 
     public QuestionAdapter(Context context) {
@@ -49,7 +51,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.question_row, parent, false);
+        view = inflater.inflate(R.layout.question_row, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
@@ -77,6 +79,10 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                 @Override
                 public void onClick(View v) {
                     mAllQuestion = allQuestionArrayList.get(getAdapterPosition());
+                    if (mAllQuestion.getId()==1){
+                        view.setBackgroundColor(Color.GREEN);
+                    }
+
                     Intent intent = new Intent(context, CheckSystemActivity.class);
                     intent.putExtra("index", getAdapterPosition());
                     context.startActivity(intent);
