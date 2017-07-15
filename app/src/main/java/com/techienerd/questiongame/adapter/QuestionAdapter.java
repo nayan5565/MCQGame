@@ -79,10 +79,6 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                 @Override
                 public void onClick(View v) {
                     mAllQuestion = allQuestionArrayList.get(getAdapterPosition());
-                    if (mAllQuestion.getId()==1){
-                        view.setBackgroundColor(Color.GREEN);
-                    }
-
                     Intent intent = new Intent(context, CheckSystemActivity.class);
                     intent.putExtra("index", getAdapterPosition());
                     context.startActivity(intent);

@@ -521,8 +521,15 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                 }
                 txtCount.setText(correct + " : " + wrong);
                 if (checkBox.isChecked() && MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
-                    checkBox.setBackgroundColor(Color.GREEN);
+//                    checkBox.setBackgroundColor(Color.GREEN);
+                    checkBox.setTextColor(Color.GREEN);
                 } else {
+
+                    for (int i = 0; i < MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
+                        if (MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getTag()==1){
+                            layOption.getChildAt(i).setBackgroundColor(Color.GREEN);
+                        }
+                    }
                     checkBox.setBackgroundColor(Color.RED);
                 }
 
