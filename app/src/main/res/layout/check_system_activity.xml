@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".activity.CheckSystemActivity">
 
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="30dp" />
+
     <TextView
         android:id="@+id/tct"
         android:layout_width="fill_parent"
@@ -19,43 +20,60 @@
         android:gravity="center"
         android:textSize="30dp" />
 
-    <TextView
-        android:id="@+id/txtCount"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0 + 0"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtCount"
+            android:textColor="#0f0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 :" />
+
+        <TextView
+            android:id="@+id/txtWrong"
+            android:textColor="#f00"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 0"
+            />
+    </LinearLayout>
+
 
     <CheckBox
-        android:visibility="gone"
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <CheckBox
-        android:visibility="gone"
         android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"/>
+        android:checked="false"
+        android:visibility="gone" />
 
     <CheckBox
-        android:visibility="gone"
         android:id="@+id/checkBox3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <CheckBox
-        android:visibility="gone"
         android:id="@+id/checkBox4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checked="false"/>
+        android:checked="false"
+        android:visibility="gone" />
+
     <LinearLayout
-        android:orientation="vertical"
         android:id="@+id/layOption"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
     </LinearLayout>
 

@@ -36,7 +36,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private TextView txtCount;
     private Button btnNext;
     private int pos;
-    private TextView txtQues, txtType;
+    private TextView txtQues, txtType, txtWrong;
     private CheckBox ch1, ch2, ch3, ch4;
     private boolean isTrue;
     private LinearLayout layOption;
@@ -72,6 +72,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         ch4.setOnClickListener(this);
         txtCount = (TextView) findViewById(R.id.txtCount);
         txtType = (TextView) findViewById(R.id.txtType);
+        txtWrong = (TextView) findViewById(R.id.txtWrong);
         btnNext = (Button) findViewById(R.id.btnNext);
         btnNext.setOnClickListener(this);
         txtQues = (TextView) findViewById(R.id.tct);
@@ -107,7 +108,8 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                 public void onClick(View v) {
                     correct = 0;
                     wrong = 0;
-                    txtCount.setText(correct + " : " + wrong);
+                    txtCount.setText(correct + "");
+                    txtWrong.setText(wrong + "");
                     Collections.shuffle(MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList());
                     prepareDisplay();
                     dialog.dismiss();
@@ -519,14 +521,15 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                 for (int i = 0; i < layOption.getChildCount(); i++) {
                     layOption.getChildAt(i).setClickable(false);
                 }
-                txtCount.setText(correct + " : " + wrong);
+                txtCount.setText(correct + " : ");
+                txtWrong.setText(wrong + "");
                 if (checkBox.isChecked() && MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
 //                    checkBox.setBackgroundColor(Color.GREEN);
                     checkBox.setTextColor(Color.GREEN);
                 } else {
 
                     for (int i = 0; i < MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
-                        if (MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getTag()==1){
+                        if (MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getTag() == 1) {
                             layOption.getChildAt(i).setBackgroundColor(Color.GREEN);
                         }
                     }
