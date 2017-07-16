@@ -109,7 +109,8 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             Button btnOk = (Button) dialog.findViewById(R.id.btnOK);
             final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
             TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
-            bestScore = mScore.getBestScore();
+//            int bp = db.getBestScores(parentId);
+            bestScore =  db.getBestScores(parentId);
             int score = correct * (100 / MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
                 bestScore = score;
@@ -119,13 +120,13 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                 db.addBestScore(mScore);
             }
 
-            int bp = db.getBestScores(parentId);
+
 //            txtBestScore.setText(db.getBestScores() + "");
-            Log.e("score", "best " + bp);
+            Log.e("score", "best " + bestScore);
             Log.e("score", "present " + score);
 
             txtMark.setText("Congratulation!Your score is " + score + " out of 100");
-            txtBestScore.setText("Best score " + bp + "");
+            txtBestScore.setText("Best score " + bestScore + "");
             btnOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
