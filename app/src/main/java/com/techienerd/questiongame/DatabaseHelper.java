@@ -46,17 +46,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public long addContuctToList(MScore mList, String tableName) {
-        long result;
+    public void addBestScore(MScore mList, String tableName) {
+        Cursor cursor = null;
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(KEY_ID, mList.getId());
-        values.put(KEY_PRESENT_SCORE, mList.getBestScore());
-        values.put(KEY_BEST_SCORE, mList.getBestScore());
+        try {
+            ContentValues values = new ContentValues();
+            values.put(KEY_ID, mList.getId());
+            values.put(KEY_PRESENT_SCORE, mList.getBestScore());
+            values.put(KEY_BEST_SCORE, mList.getBestScore());
 
-        result = db.insert(tableName, null, values);
+            String sql = "select * from " + tableName + " where " + KEY_ID + "='" + mList.getId() + "'";
+            cursor = db.rawQuery(sql, null);
+            if (cursor != null && cursor.getCount() > 0) {
+                int update = db.update(tableName, values, KEY_ID + "=?", new String[]{mList.getId() + ""});
+                Log.e("log", "content update : " + update);
+            } else {
+                long v = db.insert(tableName, null, values);
+                Log.e("log", "content insert : " + v);
 
-        return result;
+            }
+
+
+        } catch (
+                Exception e
+                )
+
+        {
+
+        }
+
+        if (cursor != null)
+            cursor.close();
+
+
     }
 
     public int deleteCotact(int id) {

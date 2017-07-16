@@ -6,7 +6,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.util.SparseBooleanArray;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -17,12 +16,8 @@ import android.widget.Toast;
 
 import com.techienerd.questiongame.DatabaseHelper;
 import com.techienerd.questiongame.R;
-import com.techienerd.questiongame.model.MAllQuestion;
-import com.techienerd.questiongame.model.MOption;
-import com.techienerd.questiongame.model.MQuestion;
 import com.techienerd.questiongame.model.MScore;
 
-import java.util.ArrayList;
 import java.util.Collections;
 
 /**
@@ -107,22 +102,28 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             Button btnOk = (Button) dialog.findViewById(R.id.btnOK);
             final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
-            TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtScore);
+            TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
+            bestScore = mScore.getBestScore();
             int score = correct * (100 / MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
                 bestScore = score;
+                mScore.setBestScore(bestScore);
+                db.addBestScore(mScore, DatabaseHelper.TABLE_FRIENDS);
             }
-            mScore.setBestScore(bestScore);
-            db.addContuctToList(mScore, DatabaseHelper.TABLE_FRIENDS);
-            txtBestScore.setText(db.getContuct() + "");
+
+            int bp = db.getContuct();
+//            txtBestScore.setText(db.getContuct() + "");
+            Log.e("score", "best " + bp);
+            Log.e("score", "present " + score);
 
             txtMark.setText("Congratulation!Your score is " + score + " out of 100");
+            txtBestScore.setText("Best score " + bp + "");
             btnOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     correct = 0;
                     wrong = 0;
-                    txtCount.setText(correct + "");
+                    txtCount.setText(correct + " : ");
                     txtWrong.setText(wrong + "");
                     Collections.shuffle(MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList());
                     prepareDisplay();
