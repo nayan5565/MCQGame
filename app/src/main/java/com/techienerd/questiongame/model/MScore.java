@@ -6,6 +6,15 @@ package com.techienerd.questiongame.model;
 public class MScore {
     private int presentScore;
     private int bestScore;
+    private int parentId;
+
+    public int getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(int parentId) {
+        this.parentId = parentId;
+    }
 
     public int getId() {
         return id;

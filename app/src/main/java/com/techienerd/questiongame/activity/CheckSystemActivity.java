@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.techienerd.questiongame.DatabaseHelper;
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.model.MScore;
+import com.techienerd.questiongame.utils.Global;
 
 import java.util.Collections;
 
@@ -39,6 +40,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private LinearLayout layOption;
     private int correct, wrong;
     private int index;
+    private int parentId;
     private int bestScore;
     private MScore mScore;
     private DatabaseHelper db;
@@ -63,6 +65,10 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private void init() {
         mScore = new MScore();
         index = getIntent().getIntExtra("index", 0);
+        Global.parentId = getIntent().getIntExtra("parentId", 0);
+        parentId = Global.parentId;
+        Log.e("id"," is "+parentId);
+
         ch1 = (CheckBox) findViewById(R.id.checkBox1);
         ch2 = (CheckBox) findViewById(R.id.checkBox2);
         ch3 = (CheckBox) findViewById(R.id.checkBox3);
@@ -107,12 +113,14 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             int score = correct * (100 / MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
                 bestScore = score;
+                mScore.setParentId(Global.parentId);
                 mScore.setBestScore(bestScore);
-                db.addBestScore(mScore, DatabaseHelper.TABLE_FRIENDS);
+
+                db.addBestScore(mScore);
             }
 
-            int bp = db.getContuct();
-//            txtBestScore.setText(db.getContuct() + "");
+            int bp = db.getBestScores(parentId);
+//            txtBestScore.setText(db.getBestScores() + "");
             Log.e("score", "best " + bp);
             Log.e("score", "present " + score);
 
@@ -545,7 +553,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
                     for (int i = 0; i < MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
                         if (MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getTag() == 1) {
-                            layOption.getChildAt(i).setBackgroundColor(Color.GREEN);
+                            ((CheckBox) layOption.getChildAt(i)).setTextColor(Color.GREEN);
                         }
                     }
                     checkBox.setTextColor(Color.RED);

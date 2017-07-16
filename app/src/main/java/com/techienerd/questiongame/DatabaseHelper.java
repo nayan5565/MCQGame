@@ -46,22 +46,22 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public void addBestScore(MScore mList, String tableName) {
+    public void addBestScore(MScore mList) {
         Cursor cursor = null;
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues values = new ContentValues();
-            values.put(KEY_ID, mList.getId());
+            values.put(KEY_ID, mList.getParentId());
             values.put(KEY_PRESENT_SCORE, mList.getBestScore());
             values.put(KEY_BEST_SCORE, mList.getBestScore());
 
-            String sql = "select * from " + tableName + " where " + KEY_ID + "='" + mList.getId() + "'";
+            String sql = "select * from " + TABLE_FRIENDS + " where " + KEY_ID + "='" + mList.getParentId() + "'";
             cursor = db.rawQuery(sql, null);
             if (cursor != null && cursor.getCount() > 0) {
-                int update = db.update(tableName, values, KEY_ID + "=?", new String[]{mList.getId() + ""});
+                int update = db.update(TABLE_FRIENDS, values, KEY_ID + "=?", new String[]{mList.getParentId() + ""});
                 Log.e("log", "content update : " + update);
             } else {
-                long v = db.insert(tableName, null, values);
+                long v = db.insert(TABLE_FRIENDS, null, values);
                 Log.e("log", "content insert : " + v);
 
             }
@@ -87,16 +87,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public int getContuct() {
+    public int getBestScores(int parentId) {
         int result = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "select * from " + TABLE_FRIENDS;
+        String sql = "select * from " + TABLE_FRIENDS + " where " + KEY_ID + "='" + parentId + "'";
 
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor != null && cursor.getCount() > 0) {
             cursor.moveToFirst();
             do {
-                String id = cursor.getString(cursor.getColumnIndex(KEY_ID));
                 int bestScore = cursor.getInt(cursor.getColumnIndex(KEY_BEST_SCORE));
                 result = bestScore;
 
