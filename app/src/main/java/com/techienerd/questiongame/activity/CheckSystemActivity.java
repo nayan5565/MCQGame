@@ -530,7 +530,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
                             layOption.getChildAt(i).setBackgroundColor(Color.GREEN);
                         }
                     }
-                    checkBox.setBackgroundColor(Color.RED);
+                    checkBox.setTextColor(Color.RED);
                 }
 
             }
