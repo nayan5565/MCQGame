@@ -15,10 +15,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.techienerd.questiongame.DatabaseHelper;
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.model.MAllQuestion;
 import com.techienerd.questiongame.model.MOption;
 import com.techienerd.questiongame.model.MQuestion;
+import com.techienerd.questiongame.model.MScore;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,6 +44,9 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private LinearLayout layOption;
     private int correct, wrong;
     private int index;
+    private int bestScore;
+    private MScore mScore;
+    private DatabaseHelper db;
 //    SparseBooleanArray checked = listView.getCheckedItemPositions();
 //    private QuestionAdapter adapter;
 
@@ -61,6 +66,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void init() {
+        mScore = new MScore();
         index = getIntent().getIntExtra("index", 0);
         ch1 = (CheckBox) findViewById(R.id.checkBox1);
         ch2 = (CheckBox) findViewById(R.id.checkBox2);
@@ -80,7 +86,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //        mQuestion = new MQuestion();
 //        adapter = new QuestionAdapter(this);
         txtType.setText(MainActivity.getInstance().allQuestionArrayList.get(index).getType());
-
+        db = new DatabaseHelper(this);
         layOption = (LinearLayout) findViewById(R.id.layOption);
 
     }
@@ -101,7 +107,15 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             Button btnOk = (Button) dialog.findViewById(R.id.btnOK);
             final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
+            TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtScore);
             int score = correct * (100 / MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+            if (score > bestScore) {
+                bestScore = score;
+            }
+            mScore.setBestScore(bestScore);
+            db.addContuctToList(mScore, DatabaseHelper.TABLE_FRIENDS);
+            txtBestScore.setText(db.getContuct() + "");
+
             txtMark.setText("Congratulation!Your score is " + score + " out of 100");
             btnOk.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -544,6 +558,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //        }
         layOption.addView(checkBox);
     }
+
 
     @Override
     public void onClick(View v) {
