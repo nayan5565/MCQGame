@@ -32,7 +32,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //    MQuestion mQuestion;
 //    MOption mOption;
     private TextView txtCount;
-    private Button btnNext,btnStatistics;
+    private Button btnNext;
     private int pos;
     private TextView txtQues, txtType, txtWrong;
     private CheckBox ch1, ch2, ch3, ch4;
@@ -81,9 +81,9 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         txtType = (TextView) findViewById(R.id.txtType);
         txtWrong = (TextView) findViewById(R.id.txtWrong);
         btnNext = (Button) findViewById(R.id.btnNext);
-        btnStatistics = (Button) findViewById(R.id.btnStatistics);
+
         btnNext.setOnClickListener(this);
-        btnStatistics.setOnClickListener(this);
+
         txtQues = (TextView) findViewById(R.id.tct);
 //        mOption = new MOption();
 //        mQuestion = new MQuestion();
@@ -574,18 +574,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.btnStatistics){
-            Dialog dialog=new Dialog(this);
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.setContentView(R.layout.dia_statistics);
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GREEN));
-            TextView txtEp=(TextView)dialog.findViewById(R.id.txtEP);
-            txtEp.setText(db.getBestScores(1)+"");
-            TextView txtBp = (TextView) dialog.findViewById(R.id.txtBP);
-            txtBp.setText(db.getBestScores(2)+"");
-            dialog.show();
 
-        }
 //        int cId = v.getId();
         if (!isTrue)
             return;

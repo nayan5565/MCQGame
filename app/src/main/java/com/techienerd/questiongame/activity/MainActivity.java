@@ -1,13 +1,18 @@
 package com.techienerd.questiongame.activity;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.techienerd.questiongame.DatabaseHelper;
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.adapter.QuestionAdapter;
 import com.techienerd.questiongame.model.MAllQuestion;
@@ -25,10 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     MQuestion mQuestion;
     MOption mOption;
     private TextView txtCount;
-    private Button btnNext;
+    private Button btnNext,btnStatistics;
     private int pos;
     private TextView txtQues;
     QuestionAdapter adapter;
+    DatabaseHelper db;
     private static MainActivity instance;
 
     public static MainActivity getInstance() {
@@ -49,9 +55,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void init() {
+        btnStatistics = (Button) findViewById(R.id.btnStatistics);
+        btnStatistics.setOnClickListener(this);
         txtCount = (TextView) findViewById(R.id.txtCount);
-        btnNext = (Button) findViewById(R.id.btnNext);
-        btnNext.setOnClickListener(this);
+//        btnNext = (Button) findViewById(R.id.btnNext);
+//        btnNext.setOnClickListener(this);
         txtQues = (TextView) findViewById(R.id.tct);
         recyclerView = (RecyclerView) findViewById(R.id.rec);
         mOption = new MOption();
@@ -59,6 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         optionArrayList = new ArrayList<>();
         questionArrayList = new ArrayList<>();
         adapter = new QuestionAdapter(this);
+        db=new DatabaseHelper(this);
     }
 
 //    public void prepareDisplay() {
@@ -613,6 +622,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+        if (v.getId()==R.id.btnStatistics){
+            Dialog dialog=new Dialog(this);
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dia_statistics);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GREEN));
+            TextView txtEp=(TextView)dialog.findViewById(R.id.txtEP);
+            txtEp.setText(db.getBestScores(1)+"");
+            TextView txtBp = (TextView) dialog.findViewById(R.id.txtBP);
+            txtBp.setText(db.getBestScores(2)+"");
+            dialog.show();
+
+        }
 //        prepareDisplay();
     }
 }
