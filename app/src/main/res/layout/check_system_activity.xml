@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.CheckSystemActivity">
 
@@ -28,18 +28,17 @@
 
         <TextView
             android:id="@+id/txtCount"
-            android:textColor="#0f0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0 :" />
+            android:text="0 :"
+            android:textColor="#0f0" />
 
         <TextView
             android:id="@+id/txtWrong"
-            android:textColor="#f00"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text=" 0"
-            />
+            android:textColor="#f00" />
     </LinearLayout>
 
 
@@ -84,4 +83,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Next" />
+
+    <Button
+        android:id="@+id/btnStatistics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="Statistics" />
 </LinearLayout>
