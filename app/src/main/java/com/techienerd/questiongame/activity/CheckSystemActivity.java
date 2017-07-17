@@ -32,7 +32,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //    MQuestion mQuestion;
 //    MOption mOption;
     private TextView txtCount;
-    private Button btnNext;
+    private Button btnNext,btnStatistics;
     private int pos;
     private TextView txtQues, txtType, txtWrong;
     private CheckBox ch1, ch2, ch3, ch4;
@@ -81,9 +81,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         txtType = (TextView) findViewById(R.id.txtType);
         txtWrong = (TextView) findViewById(R.id.txtWrong);
         btnNext = (Button) findViewById(R.id.btnNext);
-
         btnNext.setOnClickListener(this);
-
         txtQues = (TextView) findViewById(R.id.tct);
 //        mOption = new MOption();
 //        mQuestion = new MQuestion();
@@ -574,7 +572,6 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
-
 //        int cId = v.getId();
         if (!isTrue)
             return;
