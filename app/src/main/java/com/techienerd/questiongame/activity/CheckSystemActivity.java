@@ -106,7 +106,6 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     public void prepareDisplay() {
         if (pos >= MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
             Log.e("step", "one");
-            Toast.makeText(this, "level completed", Toast.LENGTH_SHORT).show();
             final Dialog dialog = new Dialog(this);
             dialog.setCancelable(false);
 //            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -136,15 +135,16 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             btnOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    pos = 0;
-                    correct = 0;
-                    wrong = 0;
-                    txtCount.setText(correct + " : ");
-                    txtWrong.setText(wrong + "");
-                    Collections.shuffle(MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList());
+//                    pos = 0;
+//                    correct = 0;
+//                    wrong = 0;
+//                    txtCount.setText(correct + " : ");
+//                    txtWrong.setText(wrong + "");
+//                    Collections.shuffle(MainActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList());
 //                    prepareDisplay();
-                    change();
-                    dialog.dismiss();
+//                    change();
+                    finish();
+//                    dialog.dismiss();
                 }
             });
             dialog.show();
