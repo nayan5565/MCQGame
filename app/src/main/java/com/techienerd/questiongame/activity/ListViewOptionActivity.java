@@ -46,6 +46,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
     }
 
     public void init() {
+        instance=this;
         Global.index=getIntent().getIntExtra("index",0);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerList);
         adapter = new ListViewOptionAdapter(this);
@@ -112,6 +113,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
+        Global.color=0;
         ListViewCategoryActivity.getInstance().pos = 0;
         prepareDisplay();
     }

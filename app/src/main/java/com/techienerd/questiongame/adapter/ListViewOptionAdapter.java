@@ -28,6 +28,7 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
     private LayoutInflater inflater;
     private ArrayList<MOption> mItems;
     private MOption mItem;
+    private int color;
     public static int wa, ca;
     View view;
 
@@ -54,6 +55,10 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
     public void onBindViewHolder(MyViewHolder holder, int position) {
         mItem = mItems.get(position);
         holder.textView.setText(mItem.getOption());
+        if (Global.color==1)
+        if (mItem.getTag() == 1) {
+            holder.textView.setTextColor(Color.GREEN);
+        }
 
     }
 
@@ -85,19 +90,18 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                     } else {
 //                        for (int i = 0; i < ListViewCategoryActivity.getInstance().allQuestionArrayList.get(Global.index).getQuestionArrayList().get(Global.pos).getOptionArrayList().size(); i++) {
 //                            if (ListViewCategoryActivity.getInstance().allQuestionArrayList.get(Global.index).getQuestionArrayList().get(Global.pos).getOptionArrayList().get(i).getTag() == 1) {
-//
+//                                textView.setTextColor(Color.GREEN);
 //                            }
 //                        }
-                        if (mItem.getTag()==1){
-                            textView.setTextColor(Color.GREEN);
-                        }
+                        Global.color = 1;
+                        notifyDataSetChanged();
                         textView.setTextColor(Color.RED);
 //                        ListViewOptionActivity.getInstance().wrong++;
                         ListViewCategoryActivity.getInstance().wrong++;
                         Toast.makeText(context, "wrong", Toast.LENGTH_SHORT).show();
                     }
 
-//                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewCategoryActivity.getInstance().correct + " " + ListViewCategoryActivity.getInstance().wrong);
+                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewCategoryActivity.getInstance().correct + " " + ListViewCategoryActivity.getInstance().wrong);
                 }
             });
         }

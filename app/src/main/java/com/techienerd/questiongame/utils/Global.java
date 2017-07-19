@@ -9,4 +9,5 @@ public class Global {
     public static int parentId;
     public static int index;
     public static int pos;
+    public static int color;
 }
