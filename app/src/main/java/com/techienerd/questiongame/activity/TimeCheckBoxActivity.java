@@ -12,7 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.techienerd.questiongame.DatabaseHelper;
+import com.techienerd.questiongame.utils.DatabaseHelper;
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.adapter.QuestionAdapter;
 import com.techienerd.questiongame.model.MAllQuestion;
@@ -21,7 +21,7 @@ import com.techienerd.questiongame.model.MOption;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class TimeCheckBoxActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     ArrayList<MOption> optionArrayList;
     ArrayList<MQuestion> questionArrayList;
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView txtQues;
     QuestionAdapter adapter;
     DatabaseHelper db;
-    private static MainActivity instance;
+    private static TimeCheckBoxActivity instance;
 
-    public static MainActivity getInstance() {
+    public static TimeCheckBoxActivity getInstance() {
 
         return instance;
     }

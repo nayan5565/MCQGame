@@ -2,17 +2,14 @@ package com.techienerd.questiongame.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.activity.CheckSystemActivity;
-import com.techienerd.questiongame.activity.MainActivity;
 import com.techienerd.questiongame.model.MAllQuestion;
 import com.techienerd.questiongame.model.MOption;
 
@@ -86,18 +83,18 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
 //                    mItem = mItems.get(getAdapterPosition());
 //                    if (mItem.getTag() == 1) {
 //                        ca++;
-//                        MainActivity.getInstance().setCount(ca + " : " + wa);
+//                        TimeCheckBoxActivity.getInstance().setCount(ca + " : " + wa);
 //                        Toast.makeText(context, "Correct", Toast.LENGTH_SHORT).show();
 ////                        itemView.postDelayed(new Runnable() {
 ////                            @Override
 ////                            public void run() {
-////                                MainActivity.getInstance().prepareDisplay();
+////                                TimeCheckBoxActivity.getInstance().prepareDisplay();
 ////                            }
 ////                        }, 2000);
 //                    } else {
 //                        wa++;
-//                        MainActivity.getInstance().setCount(ca + " : " + wa);
-////                        MainActivity.getInstance().setCount(wa + "");
+//                        TimeCheckBoxActivity.getInstance().setCount(ca + " : " + wa);
+////                        TimeCheckBoxActivity.getInstance().setCount(wa + "");
 //                        Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT).show();
 //                    }
                 }
