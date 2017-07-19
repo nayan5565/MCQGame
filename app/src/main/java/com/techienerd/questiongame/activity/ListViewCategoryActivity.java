@@ -56,7 +56,7 @@ public class ListViewCategoryActivity extends AppCompatActivity implements View.
     }
 
     private void init() {
-        btnStatistics = (Button) findViewById(R.id.btnStatistics);
+        btnStatistics = (Button) findViewById(R.id.btnStatisticsList);
         btnStatistics.setOnClickListener(this);
         recyclerView = (RecyclerView) findViewById(R.id.recList);
         mOption = new MOption();

@@ -5,23 +5,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical"
     tools:context=".activity.CheckBoxCategoryActivity">
-
-    <TextView
-        android:id="@+id/tct"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:visibility="gone"
-        android:textSize="30dp" />
-
-    <TextView
-        android:id="@+id/txtCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:visibility="gone"
-        android:text="0 : 0" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rec"
         android:layout_width="wrap_content"
