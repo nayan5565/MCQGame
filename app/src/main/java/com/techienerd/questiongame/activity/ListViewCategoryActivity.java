@@ -28,13 +28,13 @@ public class ListViewCategoryActivity extends AppCompatActivity implements View.
     RecyclerView recyclerView;
     ArrayList<MOption> optionArrayList;
     ArrayList<MQuestion> questionArrayList;
-    ArrayList<MAllQuestion> allQuestionArrayList;
+    public ArrayList<MAllQuestion> allQuestionArrayList;
     MAllQuestion mAllQuestion;
     MQuestion mQuestion;
     MOption mOption;
     private TextView txtCount;
     private Button btnNext,btnStatistics;
-    private int pos;
+    public int pos,correct,wrong;
     private TextView txtQues;
     ListViewCategoryAdapter adapter;
     DatabaseHelper db;

@@ -22,15 +22,20 @@ import com.techienerd.questiongame.utils.Global;
 /**
  * Created by Nayan on 7/19/2017.
  */
-public class ListViewOptionActivity extends AppCompatActivity {
+public class ListViewOptionActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     ListViewOptionAdapter adapter;
     Button btnNext;
-    TextView txtQues;
+    public TextView txtQues, txtResult;
     MScore mScore;
     DatabaseHelper db;
     private int parentId;
-    private int bestScore, pos, index, correct;
+    public int bestScore, pos, index, correct=0, wrong=0;
+    private static ListViewOptionActivity instance;
+
+    public static ListViewOptionActivity getInstance() {
+        return instance;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,10 +46,13 @@ public class ListViewOptionActivity extends AppCompatActivity {
     }
 
     public void init() {
+        Global.index=getIntent().getIntExtra("index",0);
         recyclerView = (RecyclerView) findViewById(R.id.recyclerList);
         adapter = new ListViewOptionAdapter(this);
         btnNext = (Button) findViewById(R.id.btnNx);
+        btnNext.setOnClickListener(this);
         txtQues = (TextView) findViewById(R.id.txtQuestion);
+        txtResult = (TextView) findViewById(R.id.txtResult);
         index = getIntent().getIntExtra("index", 0);
         Global.parentId = getIntent().getIntExtra("parentId", 0);
         parentId = Global.parentId;
@@ -65,7 +73,7 @@ public class ListViewOptionActivity extends AppCompatActivity {
             final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
             TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
             bestScore = db.getBestScores(parentId);
-            int score = correct * (100 / CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+            int score =ListViewCategoryActivity.getInstance().correct * (100 / ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
                 bestScore = score;
                 mScore.setParentId(Global.parentId);
@@ -98,6 +106,13 @@ public class ListViewOptionActivity extends AppCompatActivity {
         }
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
+        txtResult.setText(ListViewCategoryActivity.getInstance().correct + " : " + ListViewCategoryActivity.getInstance().wrong);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        ListViewCategoryActivity.getInstance().pos = 0;
+        prepareDisplay();
     }
 }

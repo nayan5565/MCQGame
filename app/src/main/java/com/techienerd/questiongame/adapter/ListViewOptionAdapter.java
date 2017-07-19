@@ -1,16 +1,22 @@
 package com.techienerd.questiongame.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.techienerd.questiongame.R;
+import com.techienerd.questiongame.activity.CheckBoxCategoryActivity;
+import com.techienerd.questiongame.activity.ListViewCategoryActivity;
+import com.techienerd.questiongame.activity.ListViewOptionActivity;
 import com.techienerd.questiongame.model.MOption;
+import com.techienerd.questiongame.utils.Global;
 
 import java.util.ArrayList;
 
@@ -68,11 +74,30 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                 @Override
                 public void onClick(View v) {
                     mItem = mItems.get(getAdapterPosition());
+                    ListViewCategoryActivity.getInstance().pos++;
+                    if (ListViewCategoryActivity.getInstance().pos > 1)
+                        return;
                     if (mItem.getTag() == 1) {
+                        textView.setTextColor(Color.GREEN);
+//                        ListViewOptionActivity.getInstance().correct++;
+                        ListViewCategoryActivity.getInstance().correct++;
                         Toast.makeText(context, "correct", Toast.LENGTH_SHORT).show();
                     } else {
-                        Toast.makeText(context, "correct", Toast.LENGTH_SHORT).show();
+//                        for (int i = 0; i < ListViewCategoryActivity.getInstance().allQuestionArrayList.get(Global.index).getQuestionArrayList().get(Global.pos).getOptionArrayList().size(); i++) {
+//                            if (ListViewCategoryActivity.getInstance().allQuestionArrayList.get(Global.index).getQuestionArrayList().get(Global.pos).getOptionArrayList().get(i).getTag() == 1) {
+//
+//                            }
+//                        }
+                        if (mItem.getTag()==1){
+                            textView.setTextColor(Color.GREEN);
+                        }
+                        textView.setTextColor(Color.RED);
+//                        ListViewOptionActivity.getInstance().wrong++;
+                        ListViewCategoryActivity.getInstance().wrong++;
+                        Toast.makeText(context, "wrong", Toast.LENGTH_SHORT).show();
                     }
+
+//                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewCategoryActivity.getInstance().correct + " " + ListViewCategoryActivity.getInstance().wrong);
                 }
             });
         }

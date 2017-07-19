@@ -7,4 +7,6 @@ import java.security.PublicKey;
  */
 public class Global {
     public static int parentId;
+    public static int index;
+    public static int pos;
 }
