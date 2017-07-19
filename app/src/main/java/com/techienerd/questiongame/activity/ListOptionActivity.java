@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.techienerd.questiongame.R;
+import com.techienerd.questiongame.adapter.ListOptionAdapter;
 import com.techienerd.questiongame.adapter.QuestionAdapter;
 import com.techienerd.questiongame.model.MAllQuestion;
 import com.techienerd.questiongame.model.MOption;
@@ -37,7 +38,7 @@ public class ListOptionActivity extends AppCompatActivity implements View.OnClic
     private Button btnNext,btnStatistics;
     private int pos;
     private TextView txtQues;
-    QuestionAdapter adapter;
+    ListOptionAdapter adapter;
     DatabaseHelper db;
     private static ListOptionActivity instance;
 
@@ -64,7 +65,7 @@ public class ListOptionActivity extends AppCompatActivity implements View.OnClic
         mQuestion = new MQuestion();
         optionArrayList = new ArrayList<>();
         questionArrayList = new ArrayList<>();
-        adapter = new QuestionAdapter(this);
+        adapter = new ListOptionAdapter(this);
         db=new DatabaseHelper(this);
     }
 
