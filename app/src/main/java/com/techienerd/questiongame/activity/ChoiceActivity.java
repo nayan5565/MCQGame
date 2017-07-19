@@ -13,7 +13,7 @@ import com.techienerd.questiongame.R;
  * Created by Nayan on 7/19/2017.
  */
 public class ChoiceActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnCheck, btnList;
+    Button btnCheck, btnList, btnFavList;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,8 +21,10 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_choice);
         btnCheck = (Button) findViewById(R.id.btnTimeCheck);
         btnList = (Button) findViewById(R.id.btnListOption);
+        btnFavList = (Button) findViewById(R.id.btnFavList);
         btnCheck.setOnClickListener(this);
         btnList.setOnClickListener(this);
+        btnFavList.setOnClickListener(this);
     }
 
     @Override
@@ -33,6 +35,10 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (v.getId() == R.id.btnListOption) {
             Intent intent = new Intent(this, ListViewCategoryActivity.class);
+            startActivity(intent);
+        }
+        if (v.getId() == R.id.btnFavList) {
+            Intent intent = new Intent(this, FavListActivity.class);
             startActivity(intent);
         }
     }

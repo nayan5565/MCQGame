@@ -16,9 +16,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.CheckBoxOptionActivity" />
-        <activity android:name=".activity.ListViewCategoryActivity"/>
-        <activity android:name=".activity.ListViewOptionActivity"/>
-        <activity android:name=".activity.CheckBoxCategoryActivity"/>
+        <activity android:name=".activity.ListViewCategoryActivity" />
+        <activity android:name=".activity.ListViewOptionActivity" />
+        <activity android:name=".activity.CheckBoxCategoryActivity" />
+        <activity android:name=".activity.FavListActivity" />
     </application>
 
 </manifest>
