@@ -59,6 +59,9 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
         if (mItem.getTag() == 1) {
             holder.textView.setTextColor(Color.GREEN);
         }
+        else if (mItem.getTag()==2){
+            holder.textView.setTextColor(Color.RED);
+        }
 
     }
 
@@ -80,21 +83,18 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                 public void onClick(View v) {
                     mItem = mItems.get(getAdapterPosition());
                     ListViewCategoryActivity.getInstance().pos++;
+                    Global.color = 1;
+                    notifyDataSetChanged();
                     if (ListViewCategoryActivity.getInstance().pos > 1)
                         return;
                     if (mItem.getTag() == 1) {
-                        textView.setTextColor(Color.GREEN);
+//                        textView.setTextColor(Color.GREEN);
                         ListViewOptionActivity.getInstance().correct++;
                         Toast.makeText(context, "correct", Toast.LENGTH_SHORT).show();
                     } else {
-//                        for (int i = 0; i < ListViewCategoryActivity.getInstance().allQuestionArrayList.get(Global.index).getQuestionArrayList().get(Global.pos).getOptionArrayList().size(); i++) {
-//                            if (ListViewCategoryActivity.getInstance().allQuestionArrayList.get(Global.index).getQuestionArrayList().get(Global.pos).getOptionArrayList().get(i).getTag() == 1) {
-//                                textView.setTextColor(Color.GREEN);
-//                            }
-//                        }
-                        Global.color = 1;
+                        mItem.setTag(2);
                         notifyDataSetChanged();
-                        textView.setTextColor(Color.RED);
+//                        textView.setTextColor(Color.RED);
                         ListViewOptionActivity.getInstance().wrong++;
                         Toast.makeText(context, "wrong", Toast.LENGTH_SHORT).show();
                     }
