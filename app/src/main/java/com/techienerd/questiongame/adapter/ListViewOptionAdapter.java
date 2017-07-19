@@ -84,8 +84,7 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                         return;
                     if (mItem.getTag() == 1) {
                         textView.setTextColor(Color.GREEN);
-//                        ListViewOptionActivity.getInstance().correct++;
-                        ListViewCategoryActivity.getInstance().correct++;
+                        ListViewOptionActivity.getInstance().correct++;
                         Toast.makeText(context, "correct", Toast.LENGTH_SHORT).show();
                     } else {
 //                        for (int i = 0; i < ListViewCategoryActivity.getInstance().allQuestionArrayList.get(Global.index).getQuestionArrayList().get(Global.pos).getOptionArrayList().size(); i++) {
@@ -96,12 +95,11 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                         Global.color = 1;
                         notifyDataSetChanged();
                         textView.setTextColor(Color.RED);
-//                        ListViewOptionActivity.getInstance().wrong++;
-                        ListViewCategoryActivity.getInstance().wrong++;
+                        ListViewOptionActivity.getInstance().wrong++;
                         Toast.makeText(context, "wrong", Toast.LENGTH_SHORT).show();
                     }
 
-                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewCategoryActivity.getInstance().correct + " " + ListViewCategoryActivity.getInstance().wrong);
+                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewOptionActivity.getInstance().correct + " " + ListViewOptionActivity.getInstance().wrong);
                 }
             });
         }

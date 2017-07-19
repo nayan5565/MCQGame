@@ -107,7 +107,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
         }
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
-        txtResult.setText(ListViewCategoryActivity.getInstance().correct + " : " + ListViewCategoryActivity.getInstance().wrong);
+        txtResult.setText(ListViewOptionActivity.getInstance().correct + " : " + ListViewOptionActivity.getInstance().wrong);
 
     }
 
