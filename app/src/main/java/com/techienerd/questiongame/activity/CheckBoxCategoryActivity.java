@@ -14,14 +14,14 @@ import android.widget.TextView;
 
 import com.techienerd.questiongame.utils.DatabaseHelper;
 import com.techienerd.questiongame.R;
-import com.techienerd.questiongame.adapter.QuestionAdapter;
+import com.techienerd.questiongame.adapter.CheckBoxCategoryAdapter;
 import com.techienerd.questiongame.model.MAllQuestion;
 import com.techienerd.questiongame.model.MQuestion;
 import com.techienerd.questiongame.model.MOption;
 
 import java.util.ArrayList;
 
-public class TimeCheckBoxActivity extends AppCompatActivity implements View.OnClickListener {
+public class CheckBoxCategoryActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerView;
     ArrayList<MOption> optionArrayList;
     ArrayList<MQuestion> questionArrayList;
@@ -33,11 +33,11 @@ public class TimeCheckBoxActivity extends AppCompatActivity implements View.OnCl
     private Button btnNext,btnStatistics;
     private int pos;
     private TextView txtQues;
-    QuestionAdapter adapter;
+    CheckBoxCategoryAdapter adapter;
     DatabaseHelper db;
-    private static TimeCheckBoxActivity instance;
+    private static CheckBoxCategoryActivity instance;
 
-    public static TimeCheckBoxActivity getInstance() {
+    public static CheckBoxCategoryActivity getInstance() {
 
         return instance;
     }
@@ -66,7 +66,7 @@ public class TimeCheckBoxActivity extends AppCompatActivity implements View.OnCl
         mQuestion = new MQuestion();
         optionArrayList = new ArrayList<>();
         questionArrayList = new ArrayList<>();
-        adapter = new QuestionAdapter(this);
+        adapter = new CheckBoxCategoryAdapter(this);
         db=new DatabaseHelper(this);
     }
 
@@ -80,7 +80,7 @@ public class TimeCheckBoxActivity extends AppCompatActivity implements View.OnCl
 //            adapter.setData(questionArrayList.get(pos).getOptionArrayList());
 //            pos++;
 //        }
-////        txtCount.setText(QuestionAdapter.ca + " : " + QuestionAdapter.wa);
+////        txtCount.setText(CheckBoxCategoryAdapter.ca + " : " + CheckBoxCategoryAdapter.wa);
 //        adapter.notifyDataSetChanged();
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 //        recyclerView.setAdapter(adapter);

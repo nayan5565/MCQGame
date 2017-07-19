@@ -22,7 +22,7 @@ import com.techienerd.questiongame.utils.Global;
 /**
  * Created by Nayan on 7/12/2017.
  */
-public class CheckSystemActivity extends AppCompatActivity implements View.OnClickListener {
+public class CheckBoxOptionActivity extends AppCompatActivity implements View.OnClickListener {
     //    ArrayList<MOption> optionArrayList;
 //    ArrayList<MQuestion> questionArrayList;
 //    ArrayList<MAllQuestion> allQuestionArrayList;
@@ -44,7 +44,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     private MScore mScore;
     private DatabaseHelper db;
 //    SparseBooleanArray checked = listView.getCheckedItemPositions();
-//    private QuestionAdapter adapter;
+//    private CheckBoxCategoryAdapter adapter;
 
 
     @Override
@@ -87,8 +87,8 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
         txtQues = (TextView) findViewById(R.id.tct);
 //        mOption = new MOption();
 //        mQuestion = new MQuestion();
-//        adapter = new QuestionAdapter(this);
-        txtType.setText(TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getType());
+//        adapter = new CheckBoxCategoryAdapter(this);
+        txtType.setText(CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getType());
         db = new DatabaseHelper(this);
         layOption = (LinearLayout) findViewById(R.id.layOption);
         handler = new Handler();
@@ -101,7 +101,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void prepareDisplay() {
-        if (pos >= TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
+        if (pos >= CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
             Log.e("step", "one");
             final Dialog dialog = new Dialog(this);
             dialog.setCancelable(false);
@@ -113,7 +113,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
 //            int bp = db.getBestScores(parentId);
             bestScore = db.getBestScores(parentId);
-            int score = correct * (100 / TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+            int score = correct * (100 / CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
                 bestScore = score;
                 mScore.setParentId(Global.parentId);
@@ -137,7 +137,7 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 //                    wrong = 0;
 //                    txtCount.setText(correct + " : ");
 //                    txtWrong.setText(wrong + "");
-//                    Collections.shuffle(TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList());
+//                    Collections.shuffle(CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList());
 //                    prepareDisplay();
 //                    change();
                     finish();
@@ -150,10 +150,10 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             return;
         } else {
             Log.e("step", "two");
-            txtQues.setText(TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getQues());
+            txtQues.setText(CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getQues());
             layOption.removeAllViews();
-            for (int i = 0; i < TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
-                addCheckbox(TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getOption(), i);
+            for (int i = 0; i < CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
+                addCheckbox(CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getOption(), i);
             }
 
         }
@@ -535,30 +535,30 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
             public void onClick(View v) {
                 isTrue = true;
                 btnNext.setBackgroundColor(0xff00ff00);
-                if (TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
-//                    TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(0).getOption().
+                if (CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
+//                    CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(0).getOption().
                     correct++;
 //                    checkBox.setBackgroundColor(Color.GREEN);
 //                    layOption.getChildAt(0).setBackgroundColor(Color.GREEN);
 //                    txtCount.setTextColor(0xff00ff00);
-                    Toast.makeText(CheckSystemActivity.this, "correct", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CheckBoxOptionActivity.this, "correct", Toast.LENGTH_SHORT).show();
                 } else {
                     wrong++;
 //                    txtCount.setTextColor(0xffff0000);
-                    Toast.makeText(CheckSystemActivity.this, "wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CheckBoxOptionActivity.this, "wrong", Toast.LENGTH_SHORT).show();
                 }
                 for (int i = 0; i < layOption.getChildCount(); i++) {
                     layOption.getChildAt(i).setClickable(false);
                 }
                 txtCount.setText(correct + " : ");
                 txtWrong.setText(wrong + "");
-                if (checkBox.isChecked() && TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
+                if (checkBox.isChecked() && CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
 //                    checkBox.setBackgroundColor(Color.GREEN);
                     checkBox.setTextColor(Color.GREEN);
                 } else {
 
-                    for (int i = 0; i < TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
-                        if (TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getTag() == 1) {
+                    for (int i = 0; i < CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
+                        if (CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getTag() == 1) {
                             ((CheckBox) layOption.getChildAt(i)).setTextColor(Color.GREEN);
                         }
                     }
@@ -593,9 +593,9 @@ public class CheckSystemActivity extends AppCompatActivity implements View.OnCli
 
                 }
                 txtOptionChanged.setText(count + "");
-                if (pos >= TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
+                if (pos >= CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
                     Log.e("position"," if"+pos);
-                    Log.e("position"," size"+ TimeCheckBoxActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+                    Log.e("position"," size"+ CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
                     return;
                 } else {
                     change();

@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,8 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.techienerd.questiongame.R;
-import com.techienerd.questiongame.adapter.ListOptionAdapter;
-import com.techienerd.questiongame.adapter.QuestionAdapter;
+import com.techienerd.questiongame.adapter.ListViewCategoryAdapter;
 import com.techienerd.questiongame.model.MAllQuestion;
 import com.techienerd.questiongame.model.MOption;
 import com.techienerd.questiongame.model.MQuestion;
@@ -26,7 +24,7 @@ import java.util.ArrayList;
 /**
  * Created by Nayan on 7/19/2017.
  */
-public class ListOptionActivity extends AppCompatActivity implements View.OnClickListener{
+public class ListViewCategoryActivity extends AppCompatActivity implements View.OnClickListener{
     RecyclerView recyclerView;
     ArrayList<MOption> optionArrayList;
     ArrayList<MQuestion> questionArrayList;
@@ -38,11 +36,11 @@ public class ListOptionActivity extends AppCompatActivity implements View.OnClic
     private Button btnNext,btnStatistics;
     private int pos;
     private TextView txtQues;
-    ListOptionAdapter adapter;
+    ListViewCategoryAdapter adapter;
     DatabaseHelper db;
-    private static ListOptionActivity instance;
+    private static ListViewCategoryActivity instance;
 
-    public static ListOptionActivity getInstance() {
+    public static ListViewCategoryActivity getInstance() {
 
         return instance;
     }
@@ -65,7 +63,7 @@ public class ListOptionActivity extends AppCompatActivity implements View.OnClic
         mQuestion = new MQuestion();
         optionArrayList = new ArrayList<>();
         questionArrayList = new ArrayList<>();
-        adapter = new ListOptionAdapter(this);
+        adapter = new ListViewCategoryAdapter(this);
         db=new DatabaseHelper(this);
     }
 
@@ -79,7 +77,7 @@ public class ListOptionActivity extends AppCompatActivity implements View.OnClic
 //            adapter.setData(questionArrayList.get(pos).getOptionArrayList());
 //            pos++;
 //        }
-////        txtCount.setText(QuestionAdapter.ca + " : " + QuestionAdapter.wa);
+////        txtCount.setText(CheckBoxCategoryAdapter.ca + " : " + CheckBoxCategoryAdapter.wa);
 //        adapter.notifyDataSetChanged();
 //        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 //        recyclerView.setAdapter(adapter);

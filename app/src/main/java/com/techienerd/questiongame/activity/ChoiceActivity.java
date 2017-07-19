@@ -1,18 +1,39 @@
 package com.techienerd.questiongame.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 
 import com.techienerd.questiongame.R;
 
 /**
  * Created by Nayan on 7/19/2017.
  */
-public class ChoiceActivity extends AppCompatActivity {
+public class ChoiceActivity extends AppCompatActivity implements View.OnClickListener {
+    Button btnCheck, btnList;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choice);
+        btnCheck = (Button) findViewById(R.id.btnTimeCheck);
+        btnList = (Button) findViewById(R.id.btnListOption);
+        btnCheck.setOnClickListener(this);
+        btnList.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btnTimeCheck) {
+            Intent intent = new Intent(this, CheckBoxCategoryActivity.class);
+            startActivity(intent);
+        }
+        if (v.getId() == R.id.btnListOption) {
+            Intent intent = new Intent(this, ListViewCategoryActivity.class);
+            startActivity(intent);
+        }
     }
 }

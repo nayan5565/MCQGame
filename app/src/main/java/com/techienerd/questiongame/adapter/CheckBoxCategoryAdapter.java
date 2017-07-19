@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.techienerd.questiongame.R;
-import com.techienerd.questiongame.activity.CheckSystemActivity;
+import com.techienerd.questiongame.activity.CheckBoxOptionActivity;
 import com.techienerd.questiongame.model.MAllQuestion;
 import com.techienerd.questiongame.model.MOption;
 
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * Created by Nayan on 7/12/2017.
  */
-public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyViewHolder> {
+public class CheckBoxCategoryAdapter extends RecyclerView.Adapter<CheckBoxCategoryAdapter.MyViewHolder> {
     private Context context;
     private LayoutInflater inflater;
     private ArrayList<MOption> mItems;
@@ -29,7 +29,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     View view;
 
 
-    public QuestionAdapter(Context context) {
+    public CheckBoxCategoryAdapter(Context context) {
         this.context = context;
 //        mItems = new ArrayList<>();
         allQuestionArrayList = new ArrayList<>();
@@ -76,25 +76,25 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
                 @Override
                 public void onClick(View v) {
                     mAllQuestion = allQuestionArrayList.get(getAdapterPosition());
-                    Intent intent = new Intent(context, CheckSystemActivity.class);
+                    Intent intent = new Intent(context, CheckBoxOptionActivity.class);
                     intent.putExtra("index", getAdapterPosition());
                     intent.putExtra("parentId", mAllQuestion.getId());
                     context.startActivity(intent);
 //                    mItem = mItems.get(getAdapterPosition());
 //                    if (mItem.getTag() == 1) {
 //                        ca++;
-//                        TimeCheckBoxActivity.getInstance().setCount(ca + " : " + wa);
+//                        CheckBoxCategoryActivity.getInstance().setCount(ca + " : " + wa);
 //                        Toast.makeText(context, "Correct", Toast.LENGTH_SHORT).show();
 ////                        itemView.postDelayed(new Runnable() {
 ////                            @Override
 ////                            public void run() {
-////                                TimeCheckBoxActivity.getInstance().prepareDisplay();
+////                                CheckBoxCategoryActivity.getInstance().prepareDisplay();
 ////                            }
 ////                        }, 2000);
 //                    } else {
 //                        wa++;
-//                        TimeCheckBoxActivity.getInstance().setCount(ca + " : " + wa);
-////                        TimeCheckBoxActivity.getInstance().setCount(wa + "");
+//                        CheckBoxCategoryActivity.getInstance().setCount(ca + " : " + wa);
+////                        CheckBoxCategoryActivity.getInstance().setCount(wa + "");
 //                        Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT).show();
 //                    }
                 }

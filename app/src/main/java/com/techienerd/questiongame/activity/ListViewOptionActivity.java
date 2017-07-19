@@ -1,0 +1,103 @@
+package com.techienerd.questiongame.activity;
+
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+import com.techienerd.questiongame.R;
+import com.techienerd.questiongame.adapter.ListViewOptionAdapter;
+import com.techienerd.questiongame.model.MScore;
+import com.techienerd.questiongame.utils.DatabaseHelper;
+import com.techienerd.questiongame.utils.Global;
+
+/**
+ * Created by Nayan on 7/19/2017.
+ */
+public class ListViewOptionActivity extends AppCompatActivity {
+    RecyclerView recyclerView;
+    ListViewOptionAdapter adapter;
+    Button btnNext;
+    TextView txtQues;
+    MScore mScore;
+    DatabaseHelper db;
+    private int parentId;
+    private int bestScore, pos, index, correct;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_listview_system);
+        init();
+        prepareDisplay();
+    }
+
+    public void init() {
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerList);
+        adapter = new ListViewOptionAdapter(this);
+        btnNext = (Button) findViewById(R.id.btnNx);
+        txtQues = (TextView) findViewById(R.id.txtQuestion);
+        index = getIntent().getIntExtra("index", 0);
+        Global.parentId = getIntent().getIntExtra("parentId", 0);
+        parentId = Global.parentId;
+        Log.e("id", " is " + parentId);
+        mScore = new MScore();
+        db = new DatabaseHelper(this);
+    }
+
+    public void prepareDisplay() {
+        if (pos >= ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
+            Log.e("step", "one");
+            final Dialog dialog = new Dialog(this);
+            dialog.setCancelable(false);
+//            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            dialog.setContentView(R.layout.dia_game_over);
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            Button btnOk = (Button) dialog.findViewById(R.id.btnOK);
+            final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
+            TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
+            bestScore = db.getBestScores(parentId);
+            int score = correct * (100 / CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+            if (score > bestScore) {
+                bestScore = score;
+                mScore.setParentId(Global.parentId);
+                mScore.setBestScore(bestScore);
+
+                db.addBestScore(mScore);
+            }
+
+
+//            txtBestScore.setText(db.getBestScores() + "");
+            Log.e("score", "best " + bestScore);
+            Log.e("score", "present " + score);
+
+            txtMark.setText("Congratulation!Your score is " + score + " out of 100");
+            txtBestScore.setText("Best score " + bestScore + "");
+            btnOk.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+            dialog.show();
+
+            return;
+        } else {
+            Log.e("step", "two");
+            txtQues.setText(ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getQues());
+            adapter.setData(ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList());
+            pos++;
+        }
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        recyclerView.setAdapter(adapter);
+
+    }
+}
