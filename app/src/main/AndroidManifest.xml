@@ -20,6 +20,7 @@
         <activity android:name=".activity.ListViewOptionActivity" />
         <activity android:name=".activity.CheckBoxCategoryActivity" />
         <activity android:name=".activity.FavListActivity" />
+        <activity android:name=".activity.DataGetFavAcitivity" />
     </application>
 
 </manifest>

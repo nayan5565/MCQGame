@@ -22,4 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Go to FavList" />
+    <Button
+        android:id="@+id/btnGET"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data Fav"/>
+
 </LinearLayout>

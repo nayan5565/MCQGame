@@ -6,14 +6,17 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.techienerd.questiongame.R;
+import com.techienerd.questiongame.model.MOption;
+import com.techienerd.questiongame.utils.DatabaseHelper;
 
 /**
  * Created by Nayan on 7/19/2017.
  */
 public class ChoiceActivity extends AppCompatActivity implements View.OnClickListener {
-    Button btnCheck, btnList, btnFavList;
+    Button btnCheck, btnList, btnFavList, btnGet;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -22,6 +25,8 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
         btnCheck = (Button) findViewById(R.id.btnTimeCheck);
         btnList = (Button) findViewById(R.id.btnListOption);
         btnFavList = (Button) findViewById(R.id.btnFavList);
+        btnGet = (Button) findViewById(R.id.btnGET);
+        btnGet.setOnClickListener(this);
         btnCheck.setOnClickListener(this);
         btnList.setOnClickListener(this);
         btnFavList.setOnClickListener(this);
@@ -39,6 +44,10 @@ public class ChoiceActivity extends AppCompatActivity implements View.OnClickLis
         }
         if (v.getId() == R.id.btnFavList) {
             Intent intent = new Intent(this, FavListActivity.class);
+            startActivity(intent);
+        }
+        if (v.getId() == R.id.btnGET) {
+            Intent intent = new Intent(this, DataGetFavAcitivity.class);
             startActivity(intent);
         }
     }

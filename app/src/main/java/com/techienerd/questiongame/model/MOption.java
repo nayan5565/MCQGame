@@ -5,6 +5,16 @@ package com.techienerd.questiongame.model;
  */
 public class MOption {
     private int id, tag;
+    private int fav;
+
+    public int getFav() {
+        return fav;
+    }
+
+    public void setFav(int fav) {
+        this.fav = fav;
+    }
+
     private String option;
 
     public int getId() {

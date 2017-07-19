@@ -41,125 +41,125 @@ public class FavListActivity extends AppCompatActivity {
         optionArrayList = new ArrayList<>();
         mOption = new MOption();
 
-        mOption.setOption("2");
+        mOption.setOption("Nayan");
 
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("7");
-
-
-        optionArrayList.add(mOption);
-
-        mOption = new MOption();
-
-        mOption.setOption("8");
+        mOption.setOption("Jewel");
 
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("4");
+        mOption.setOption("Sohel");
 
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("10");
+        mOption.setOption("Jarif");
 
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("9");
+        mOption.setOption("Miraz");
+
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("5");
+        mOption.setOption("Monir");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("11");
+        mOption.setOption("Musa");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("9");
+        mOption.setOption("Kafi");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("7");
+        mOption.setOption("Arafat");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("5");
+        mOption.setOption("Tanjil");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("12");
+        mOption.setOption("Sajib");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("5");
+        mOption.setOption("Rubel");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("6");
+        mOption.setOption("Miran");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("9");
+        mOption.setOption("Maruf");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("10");
+        mOption.setOption("Sumon");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("16");
+        mOption.setOption("Rauf");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("12");
+        mOption.setOption("Jahid");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("11");
+        mOption.setOption("Sariful");
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
 
-        mOption.setOption("10");
+        mOption.setOption("Mamun");
+
+        optionArrayList.add(mOption);
+
+        mOption = new MOption();
+
+        mOption.setOption("Milon");
 
         optionArrayList.add(mOption);
         Log.e("favlist", " size " + optionArrayList.size());

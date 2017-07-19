@@ -6,12 +6,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.techienerd.questiongame.R;
-import com.techienerd.questiongame.activity.ListViewOptionActivity;
-import com.techienerd.questiongame.model.MAllQuestion;
 import com.techienerd.questiongame.model.MOption;
+import com.techienerd.questiongame.utils.DatabaseHelper;
 
 import java.util.ArrayList;
 
@@ -24,6 +24,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
     private ArrayList<MOption> mItems;
     private MOption mItem;
     private View view;
+    private DatabaseHelper db;
 
 
     public FavAdapter(Context context) {
@@ -58,16 +59,27 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        Button btnFav;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.txtFav);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            btnFav = (Button) itemView.findViewById(R.id.btnFav);
+            btnFav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    if (mItem.getFav() == 0) {
+                        mItem.setFav(1);
+                    } else {
+                        mItem.setFav(0);
+                    }
+                    notifyDataSetChanged();
+                    db=new DatabaseHelper(context);
+                    mItems.add(mItem);
+                    db.addFavData(mItem);
                 }
             });
+
         }
     }
 }
