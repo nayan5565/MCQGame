@@ -5,16 +5,9 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recList"
+        android:id="@+id/recyclerList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
-
-    <Button
-        android:id="@+id/btnStatisticsList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:text="Statistics" />
 
 </LinearLayout>
