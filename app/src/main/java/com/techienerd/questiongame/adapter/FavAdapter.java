@@ -2,6 +2,7 @@ package com.techienerd.questiongame.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -49,6 +50,11 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
     public void onBindViewHolder(MyViewHolder holder, int position) {
         mItem = mItems.get(position);
         holder.textView.setText(mItem.getOption());
+        if (mItem.getFav() == 1) {
+            holder.btnFav.setText("Un Fav");
+        } else {
+            holder.btnFav.setText(" Fav");
+        }
 
     }
 
@@ -68,17 +74,19 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
             btnFav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mItem = mItems.get(getAdapterPosition());
+                    MOption mItem = mItems.get(getAdapterPosition());
                     if (mItem.getFav() == 0) {
                         mItem.setFav(1);
 
                     } else {
                         mItem.setFav(0);
                     }
-                    notifyDataSetChanged();
                     db = new DatabaseHelper(context);
-                    mItems.add(mItem);
                     db.addFavData(mItem);
+//                    mItems.get(getAdapterPosition()).setFav(mItem.getFav());
+//                    mItems = db.getFavData();
+                    notifyDataSetChanged();
+
                 }
             });
 

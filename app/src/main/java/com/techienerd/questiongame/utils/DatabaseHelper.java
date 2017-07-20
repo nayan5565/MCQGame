@@ -28,7 +28,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_BEST_SCORE = "bs";
 
 
-    private String CREATE_TABLE_CONTUCTS = "create table " + TABLE_FRIENDS + "(" + KEY_ID + " integer primary key autoincrement,"
+    private String CREATE_TABLE_CONTUCTS = "create table " + TABLE_FRIENDS + "(" + KEY_ID + " integer primary key,"
             + KEY_PRESENT_SCORE + " integer,"
             + KEY_FAV + " integer,"
             + KEY_OPTION + " text,"
@@ -96,6 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             String sql = "select * from " + TABLE_FRIENDS + " where " + KEY_ID + "='" + mOption.getId() + "'";
             cursor = db.rawQuery(sql, null);
+            Log.e("c"," c"+cursor.getCount());
             if (cursor != null && cursor.getCount() > 0) {
                 int update = db.update(TABLE_FRIENDS, values, KEY_ID + "=?", new String[]{mOption.getId() + ""});
                 Log.e("log", "content update : " + update);
