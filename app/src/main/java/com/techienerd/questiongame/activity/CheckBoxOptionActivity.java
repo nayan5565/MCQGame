@@ -116,7 +116,9 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
             btnOk.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    dialog.dismiss();
                     finish();
+
                 }
             });
             dialog.show();
@@ -229,5 +231,13 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
 
         }
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        handler.removeCallbacksAndMessages(null);
+        handler=null;
+        Log.e("destroy"," des");
     }
 }

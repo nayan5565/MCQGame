@@ -91,6 +91,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues values = new ContentValues();
+            values.put(KEY_ID, mOption.getId());
             values.put(KEY_FAV, mOption.getFav());
             values.put(KEY_OPTION, mOption.getOption());
 
@@ -172,7 +173,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         MOption mOption;
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "select * from " + TABLE_FRIENDS;
-
         Cursor cursor = db.rawQuery(sql, null);
         Log.e("cursor", "size " + cursor.getCount());
         if (cursor != null && cursor.getCount() > 0) {

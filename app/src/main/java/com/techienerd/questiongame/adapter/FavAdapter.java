@@ -84,7 +84,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
                     db = new DatabaseHelper(context);
                     db.addFavData(mItem);
 //                    mItems.get(getAdapterPosition()).setFav(mItem.getFav());
-//                    mItems = db.getFavData();
+                    mItems = db.getFavData();
                     notifyDataSetChanged();
 
                 }
