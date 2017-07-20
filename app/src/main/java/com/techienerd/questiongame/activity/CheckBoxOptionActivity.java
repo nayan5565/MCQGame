@@ -73,7 +73,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
         btnNext = (Button) findViewById(R.id.btnNext);
         btnNext.setOnClickListener(this);
         txtQues = (TextView) findViewById(R.id.tct);
-        txtType.setText(CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getType());
+        txtType.setText(CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getType());
         db = new DatabaseHelper(this);
         layOption = (LinearLayout) findViewById(R.id.layOption);
         handler = new Handler();
@@ -87,7 +87,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
 
     public void prepareDisplay() {
 
-        if (pos >= CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
+        if (pos >= CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size()) {
             Log.e("step", "one");
             final Dialog dialog = new Dialog(this);
             dialog.setCancelable(false);
@@ -98,7 +98,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
             final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
             TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
             bestScore = db.getBestScores(parentId);
-            int score = correct * (100 / CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+            int score = correct * (100 / CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
                 bestScore = score;
                 mScore.setParentId(Global.parentId);
@@ -124,10 +124,10 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
             return;
         } else {
             Log.e("step", "two");
-            txtQues.setText(CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getQues());
+            txtQues.setText(CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getQues());
             layOption.removeAllViews();
-            for (int i = 0; i < CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
-                addCheckbox(CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getOption(), i);
+            for (int i = 0; i < CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
+                addCheckbox(CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getOption(), i);
             }
 
         }
@@ -142,7 +142,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
             public void onClick(View v) {
                 isTrue = true;
                 btnNext.setBackgroundColor(0xff00ff00);
-                if (CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
+                if (CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
                     correct++;
                     Toast.makeText(CheckBoxOptionActivity.this, "correct", Toast.LENGTH_SHORT).show();
                 } else {
@@ -154,12 +154,12 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
                 }
                 txtCount.setText(correct + " : ");
                 txtWrong.setText(wrong + "");
-                if (checkBox.isChecked() && CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
+                if (checkBox.isChecked() && CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
                     checkBox.setTextColor(Color.GREEN);
                 } else {
 
-                    for (int i = 0; i < CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
-                        if (CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getTag() == 1) {
+                    for (int i = 0; i < CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().size(); i++) {
+                        if (CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(i).getTag() == 1) {
                             ((CheckBox) layOption.getChildAt(i)).setTextColor(Color.GREEN);
                         }
                     }
@@ -195,9 +195,9 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
 
                 }
                 txtOptionChanged.setText(count + "");
-                if (pos >= CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
+                if (pos >= CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size()) {
                     Log.e("position"," if"+pos);
-                    Log.e("position"," size"+ CheckBoxCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+                    Log.e("position"," size"+ CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size());
                     return;
                 } else {
                     change();

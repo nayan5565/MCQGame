@@ -6,11 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
 import com.techienerd.questiongame.R;
-import com.techienerd.questiongame.model.MOption;
-import com.techienerd.questiongame.utils.DatabaseHelper;
 
 /**
  * Created by Nayan on 7/19/2017.

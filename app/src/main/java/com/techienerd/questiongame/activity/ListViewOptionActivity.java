@@ -71,7 +71,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
     }
 
     public void prepareDisplay() {
-        if (pos >= ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size()) {
+        if (pos >= ListViewCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size()) {
             Log.e("step", "one");
             final Dialog dialog = new Dialog(this);
             dialog.setCancelable(false);
@@ -82,7 +82,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
             final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
             TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
             bestScore = db.getBestScores(parentId);
-            int score =correct * (100 / ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+            int score =correct * (100 / ListViewCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
                 bestScore = score;
                 mScore.setParentId(Global.parentId);
@@ -108,8 +108,8 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
             return;
         } else {
             Log.e("step", "two");
-            txtQues.setText(ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getQues());
-            adapter.setData(ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList());
+            txtQues.setText(ListViewCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getQues());
+            adapter.setData(ListViewCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList());
             pos++;
         }
 

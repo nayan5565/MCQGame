@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Nayan on 7/15/2017.
  */
-public class MAllQuestion {
+public class MCategory {
     private int id;
     private ArrayList<MQuestion>questionArrayList;
     private String type;

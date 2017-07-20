@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.techienerd.questiongame.utils.DatabaseHelper;
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.adapter.CheckBoxCategoryAdapter;
-import com.techienerd.questiongame.model.MAllQuestion;
+import com.techienerd.questiongame.model.MCategory;
 import com.techienerd.questiongame.model.MQuestion;
 import com.techienerd.questiongame.model.MOption;
 
@@ -25,8 +25,8 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
     RecyclerView recyclerView;
     ArrayList<MOption> optionArrayList;
     ArrayList<MQuestion> questionArrayList;
-    ArrayList<MAllQuestion> allQuestionArrayList;
-    MAllQuestion mAllQuestion;
+    ArrayList<MCategory> categoryArrayList;
+    MCategory mCategory;
     MQuestion mQuestion;
     MOption mOption;
     private Button btnStatistics;
@@ -61,7 +61,7 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         db=new DatabaseHelper(this);
     }
     public void prepareView() {
-        adapter.setQues(allQuestionArrayList);
+        adapter.setQues(categoryArrayList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
@@ -69,12 +69,12 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
     private void generateToMulti() {
         questionArrayList = new ArrayList<>();
         optionArrayList = new ArrayList<>();
-        allQuestionArrayList = new ArrayList<>();
+        categoryArrayList = new ArrayList<>();
 
-        mAllQuestion = new MAllQuestion();
+        mCategory = new MCategory();
 
-        mAllQuestion.setType("ইংরেজি প্রশ্ন ");
-        mAllQuestion.setId(1);
+        mCategory.setType("ইংরেজি প্রশ্ন ");
+        mCategory.setId(1);
 
         mQuestion = new MQuestion();
 
@@ -240,8 +240,8 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         questionArrayList.add(mQuestion);
 
 
-        mAllQuestion.setQuestionArrayList(questionArrayList);
-        allQuestionArrayList.add(mAllQuestion);
+        mCategory.setQuestionArrayList(questionArrayList);
+        categoryArrayList.add(mCategory);
 
         //bangla question
 
@@ -249,9 +249,9 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
 
-        mAllQuestion = new MAllQuestion();
-        mAllQuestion.setType("বাংলা প্রশ্ন");
-        mAllQuestion.setId(2);
+        mCategory = new MCategory();
+        mCategory.setType("বাংলা প্রশ্ন");
+        mCategory.setId(2);
 
         mQuestion.setQues("২+২ =?");
 
@@ -415,8 +415,8 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         questionArrayList.add(mQuestion);
 
 
-        mAllQuestion.setQuestionArrayList(questionArrayList);
-        allQuestionArrayList.add(mAllQuestion);
+        mCategory.setQuestionArrayList(questionArrayList);
+        categoryArrayList.add(mCategory);
 
 
     }

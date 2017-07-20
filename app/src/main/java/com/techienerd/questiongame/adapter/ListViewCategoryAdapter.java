@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.activity.ListViewOptionActivity;
-import com.techienerd.questiongame.model.MAllQuestion;
-import com.techienerd.questiongame.model.MOption;
+import com.techienerd.questiongame.model.MCategory;
 
 import java.util.ArrayList;
 
@@ -21,28 +20,19 @@ import java.util.ArrayList;
 public class ListViewCategoryAdapter extends RecyclerView.Adapter<ListViewCategoryAdapter.MyViewHolder> {
     private Context context;
     private LayoutInflater inflater;
-    private ArrayList<MOption> mItems;
-    private ArrayList<MAllQuestion> allQuestionArrayList;
-    private MAllQuestion mAllQuestion;
-    private MOption mItem;
-    public static int wa, ca;
+    private ArrayList<MCategory> categoryArrayList;
+    private MCategory mCategory;
     View view;
 
 
     public ListViewCategoryAdapter(Context context) {
         this.context = context;
-//        mItems = new ArrayList<>();
-        allQuestionArrayList = new ArrayList<>();
+        categoryArrayList = new ArrayList<>();
         inflater = LayoutInflater.from(context);
     }
 
-    public void setData(ArrayList<MOption> mItems) {
-        this.mItems = mItems;
-        notifyDataSetChanged();
-    }
-
-    public void setQues(ArrayList<MAllQuestion> allQuestionArrayList) {
-        this.allQuestionArrayList = allQuestionArrayList;
+    public void setQues(ArrayList<MCategory> allQuestionArrayList) {
+        this.categoryArrayList = allQuestionArrayList;
         notifyDataSetChanged();
     }
 
@@ -55,15 +45,14 @@ public class ListViewCategoryAdapter extends RecyclerView.Adapter<ListViewCatego
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-//        mItem = mItems.get(position);
-        mAllQuestion = allQuestionArrayList.get(position);
-        holder.textView.setText(mAllQuestion.getType());
+        mCategory = categoryArrayList.get(position);
+        holder.textView.setText(mCategory.getType());
 
     }
 
     @Override
     public int getItemCount() {
-        return allQuestionArrayList.size();
+        return categoryArrayList.size();
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
@@ -75,10 +64,10 @@ public class ListViewCategoryAdapter extends RecyclerView.Adapter<ListViewCatego
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mAllQuestion = allQuestionArrayList.get(getAdapterPosition());
+                    mCategory = categoryArrayList.get(getAdapterPosition());
                     Intent intent = new Intent(context, ListViewOptionActivity.class);
                     intent.putExtra("index", getAdapterPosition());
-                    intent.putExtra("parentId", mAllQuestion.getId());
+                    intent.putExtra("parentId", mCategory.getId());
                     context.startActivity(intent);
 
                 }

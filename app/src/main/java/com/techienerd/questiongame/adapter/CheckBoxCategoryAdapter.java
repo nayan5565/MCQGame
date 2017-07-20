@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.activity.CheckBoxOptionActivity;
-import com.techienerd.questiongame.model.MAllQuestion;
-import com.techienerd.questiongame.model.MOption;
+import com.techienerd.questiongame.model.MCategory;
 
 import java.util.ArrayList;
 
@@ -21,27 +20,18 @@ import java.util.ArrayList;
 public class CheckBoxCategoryAdapter extends RecyclerView.Adapter<CheckBoxCategoryAdapter.MyViewHolder> {
     private Context context;
     private LayoutInflater inflater;
-    private ArrayList<MOption> mItems;
-    private ArrayList<MAllQuestion> allQuestionArrayList;
-    private MAllQuestion mAllQuestion;
-    private MOption mItem;
-    public static int wa, ca;
+    private ArrayList<MCategory> allQuestionArrayList;
+    private MCategory mAllQuestion;
     View view;
 
 
     public CheckBoxCategoryAdapter(Context context) {
         this.context = context;
-//        mItems = new ArrayList<>();
         allQuestionArrayList = new ArrayList<>();
         inflater = LayoutInflater.from(context);
     }
 
-    public void setData(ArrayList<MOption> mItems) {
-        this.mItems = mItems;
-        notifyDataSetChanged();
-    }
-
-    public void setQues(ArrayList<MAllQuestion> allQuestionArrayList) {
+    public void setQues(ArrayList<MCategory> allQuestionArrayList) {
         this.allQuestionArrayList = allQuestionArrayList;
         notifyDataSetChanged();
     }
@@ -55,7 +45,6 @@ public class CheckBoxCategoryAdapter extends RecyclerView.Adapter<CheckBoxCatego
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-//        mItem = mItems.get(position);
         mAllQuestion = allQuestionArrayList.get(position);
         holder.textView.setText(mAllQuestion.getType());
 
@@ -80,23 +69,6 @@ public class CheckBoxCategoryAdapter extends RecyclerView.Adapter<CheckBoxCatego
                     intent.putExtra("index", getAdapterPosition());
                     intent.putExtra("parentId", mAllQuestion.getId());
                     context.startActivity(intent);
-//                    mItem = mItems.get(getAdapterPosition());
-//                    if (mItem.getTag() == 1) {
-//                        ca++;
-//                        CheckBoxCategoryActivity.getInstance().setCount(ca + " : " + wa);
-//                        Toast.makeText(context, "Correct", Toast.LENGTH_SHORT).show();
-////                        itemView.postDelayed(new Runnable() {
-////                            @Override
-////                            public void run() {
-////                                CheckBoxCategoryActivity.getInstance().prepareDisplay();
-////                            }
-////                        }, 2000);
-//                    } else {
-//                        wa++;
-//                        CheckBoxCategoryActivity.getInstance().setCount(ca + " : " + wa);
-////                        CheckBoxCategoryActivity.getInstance().setCount(wa + "");
-//                        Toast.makeText(context, "Wrong", Toast.LENGTH_SHORT).show();
-//                    }
                 }
             });
         }
