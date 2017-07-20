@@ -91,20 +91,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         try {
             ContentValues values = new ContentValues();
-            values.put(KEY_ID, mOption.getId());
             values.put(KEY_FAV, mOption.getFav());
             values.put(KEY_OPTION, mOption.getOption());
 
             String sql = "select * from " + TABLE_FRIENDS + " where " + KEY_ID + "='" + mOption.getId() + "'";
             cursor = db.rawQuery(sql, null);
-//            if (cursor != null && cursor.getCount() > 0) {
-//                int update = db.update(TABLE_FRIENDS, values, KEY_FAV + "=?", new String[]{mOption.getFav() + ""});
-//                Log.e("log", "content update : " + update);
-//            } else {
+            if (cursor != null && cursor.getCount() > 0) {
+                int update = db.update(TABLE_FRIENDS, values, KEY_ID + "=?", new String[]{mOption.getId() + ""});
+                Log.e("log", "content update : " + update);
+            } else {
                 long v = db.insert(TABLE_FRIENDS, null, values);
                 Log.e("log", "content insert : " + v);
 
-//            }
+            }
 
 
         } catch (
@@ -144,21 +143,50 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
-    public MOption getFavData() {
-        MOption mOption = new MOption();
+    public ArrayList<MOption> getFavData() {
+        ArrayList<MOption> mOptions = new ArrayList<>();
+        MOption mOption;
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "select * from " + TABLE_FRIENDS + " where " + KEY_FAV + "='" + 1 + "'";
 
         Cursor cursor = db.rawQuery(sql, null);
+        Log.e("cursor", "size " + cursor.getCount());
         if (cursor != null && cursor.getCount() > 0) {
+
             cursor.moveToFirst();
             do {
-                cursor.getInt(cursor.getColumnIndex(KEY_FAV));
-                cursor.getString(cursor.getColumnIndex(KEY_OPTION));
+                mOption = new MOption();
+                mOption.setFav(cursor.getInt(cursor.getColumnIndex(KEY_FAV)));
+                mOption.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+                mOption.setOption(cursor.getString(cursor.getColumnIndex(KEY_OPTION)));
+                mOptions.add(mOption);
 
             } while (cursor.moveToNext());
         }
-        return mOption;
+        return mOptions;
+    }
+
+    public ArrayList<MOption> getData() {
+        ArrayList<MOption> mOptions = new ArrayList<>();
+        MOption mOption;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = "select * from " + TABLE_FRIENDS;
+
+        Cursor cursor = db.rawQuery(sql, null);
+        Log.e("cursor", "size " + cursor.getCount());
+        if (cursor != null && cursor.getCount() > 0) {
+
+            cursor.moveToFirst();
+            do {
+                mOption = new MOption();
+                mOption.setFav(cursor.getInt(cursor.getColumnIndex(KEY_FAV)));
+                mOption.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
+                mOption.setOption(cursor.getString(cursor.getColumnIndex(KEY_OPTION)));
+                mOptions.add(mOption);
+
+            } while (cursor.moveToNext());
+        }
+        return mOptions;
     }
 
 

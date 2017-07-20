@@ -10,6 +10,7 @@ import android.util.Log;
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.adapter.FavAdapter;
 import com.techienerd.questiongame.model.MOption;
+import com.techienerd.questiongame.utils.DatabaseHelper;
 
 import java.util.ArrayList;
 
@@ -19,8 +20,10 @@ import java.util.ArrayList;
 public class FavListActivity extends AppCompatActivity {
     private MOption mOption;
     private ArrayList<MOption> optionArrayList;
+    ArrayList<MOption> mOptionsfromDatabase;
     RecyclerView recyclerView;
     FavAdapter favAdapter;
+    private DatabaseHelper db;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class FavListActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recFav);
         favAdapter = new FavAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mOptionsfromDatabase = new ArrayList<>();
+        db = new DatabaseHelper(this);
     }
 
     private void generate() {
@@ -162,8 +167,14 @@ public class FavListActivity extends AppCompatActivity {
         mOption.setOption("Milon");
 
         optionArrayList.add(mOption);
-        Log.e("favlist", " size " + optionArrayList.size());
-        favAdapter.setData(optionArrayList);
+
+        for (int i = 0; i < optionArrayList.size(); i++) {
+            mOption = optionArrayList.get(i);
+            db.addFavData(mOption);
+        }
+        mOptionsfromDatabase = db.getData();
+        Log.e("favlist", " size " + mOptionsfromDatabase.size());
+        favAdapter.setData(mOptionsfromDatabase);
         recyclerView.setAdapter(favAdapter);
     }
 }

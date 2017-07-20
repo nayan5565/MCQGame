@@ -93,7 +93,7 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                         ListViewOptionActivity.getInstance().wrong++;
                     }
 
-                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewOptionActivity.getInstance().correct + " :  " + ListViewOptionActivity.getInstance().wrong);
+                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewOptionActivity.getInstance().correct + " : " + ListViewOptionActivity.getInstance().wrong);
                 }
             });
         }

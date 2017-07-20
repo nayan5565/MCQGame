@@ -36,8 +36,8 @@ public class DataGetFavAcitivity extends AppCompatActivity {
         optionArrayList = new ArrayList<>();
         mOption = new MOption();
         db = new DatabaseHelper(this);
-        mOption = db.getFavData();
-        optionArrayList.add(mOption);
+
+        optionArrayList = db.getFavData();
         favAdapter = new FavAdapter(this);
         favAdapter.setData(optionArrayList);
         recyclerView.setAdapter(favAdapter);

@@ -68,17 +68,17 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.MyViewHolder> {
             btnFav.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mItem = mItems.get(getAdapterPosition());
                     if (mItem.getFav() == 0) {
                         mItem.setFav(1);
-                        db = new DatabaseHelper(context);
-                        mItem.setOption(mItem.getOption());
-                        mItems.add(mItem);
-                        db.addFavData(mItem);
+
                     } else {
                         mItem.setFav(0);
                     }
                     notifyDataSetChanged();
-
+                    db = new DatabaseHelper(context);
+                    mItems.add(mItem);
+                    db.addFavData(mItem);
                 }
             });
 
