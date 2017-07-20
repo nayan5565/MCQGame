@@ -29,7 +29,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
     public TextView txtQues, txtResult;
     MScore mScore;
     DatabaseHelper db;
-    private int parentId;
+    public int parentId,stop;
     public int bestScore, pos, index, correct=0, wrong=0;
     private static ListViewOptionActivity instance;
 
@@ -43,6 +43,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.activity_listview_option);
         init();
         prepareDisplay();
+
     }
 
     public void init() {
@@ -51,6 +52,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
         recyclerView = (RecyclerView) findViewById(R.id.recyclerList);
         adapter = new ListViewOptionAdapter(this);
         btnNext = (Button) findViewById(R.id.btnNx);
+        btnNext.setBackgroundColor(Color.RED);
         btnNext.setOnClickListener(this);
         txtQues = (TextView) findViewById(R.id.txtQuestion);
         txtResult = (TextView) findViewById(R.id.txtResult);
@@ -60,6 +62,12 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
         Log.e("id", " is " + parentId);
         mScore = new MScore();
         db = new DatabaseHelper(this);
+    }
+
+    public void colorChange(){
+        if (stop==1){
+            btnNext.setBackgroundColor(Color.GREEN);
+        }
     }
 
     public void prepareDisplay() {
@@ -105,6 +113,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
             adapter.setData(ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList());
             pos++;
         }
+
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
         txtResult.setText(ListViewOptionActivity.getInstance().correct + " : " + ListViewOptionActivity.getInstance().wrong);
@@ -113,8 +122,19 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
 
     @Override
     public void onClick(View v) {
-        Global.color=0;
-        ListViewCategoryActivity.getInstance().pos = 0;
-        prepareDisplay();
+
+        if (stop==0)
+            return;
+
+
+
+        if (v.getId()==R.id.btnNx){
+            Global.color=0;
+            stop=0;
+            btnNext.setBackgroundColor(Color.RED);
+            ListViewCategoryActivity.getInstance().pos = 0;
+            prepareDisplay();
+        }
+
     }
 }

@@ -97,14 +97,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
             String sql = "select * from " + TABLE_FRIENDS + " where " + KEY_ID + "='" + mOption.getId() + "'";
             cursor = db.rawQuery(sql, null);
-            if (cursor != null && cursor.getCount() > 0) {
-                int update = db.update(TABLE_FRIENDS, values, KEY_ID + "=?", new String[]{mOption.getId() + ""});
-                Log.e("log", "content update : " + update);
-            } else {
+//            if (cursor != null && cursor.getCount() > 0) {
+//                int update = db.update(TABLE_FRIENDS, values, KEY_FAV + "=?", new String[]{mOption.getFav() + ""});
+//                Log.e("log", "content update : " + update);
+//            } else {
                 long v = db.insert(TABLE_FRIENDS, null, values);
                 Log.e("log", "content insert : " + v);
 
-            }
+//            }
 
 
         } catch (

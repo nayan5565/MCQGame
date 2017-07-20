@@ -55,13 +55,12 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
     public void onBindViewHolder(MyViewHolder holder, int position) {
         mItem = mItems.get(position);
         holder.textView.setText(mItem.getOption());
-        if (Global.color==1)
-        if (mItem.getTag() == 1) {
-            holder.textView.setTextColor(Color.GREEN);
-        }
-        else if (mItem.getTag()==2){
-            holder.textView.setTextColor(Color.RED);
-        }
+        if (Global.color == 1)
+            if (mItem.getTag() == 1) {
+                holder.textView.setTextColor(Color.GREEN);
+            } else if (mItem.getTag() == 2) {
+                holder.textView.setTextColor(Color.RED);
+            }
 
     }
 
@@ -84,6 +83,8 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                     mItem = mItems.get(getAdapterPosition());
                     ListViewCategoryActivity.getInstance().pos++;
                     Global.color = 1;
+                    ListViewOptionActivity.getInstance().stop++;
+                    ListViewOptionActivity.getInstance().colorChange();
                     notifyDataSetChanged();
                     if (ListViewCategoryActivity.getInstance().pos > 1)
                         return;
