@@ -82,7 +82,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
             final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
             TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
             bestScore = db.getBestScores(parentId);
-            int score =ListViewCategoryActivity.getInstance().correct * (100 / ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
+            int score =correct * (100 / ListViewCategoryActivity.getInstance().allQuestionArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
                 bestScore = score;
                 mScore.setParentId(Global.parentId);
@@ -92,7 +92,6 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
             }
 
 
-//            txtBestScore.setText(db.getBestScores() + "");
             Log.e("score", "best " + bestScore);
             Log.e("score", "present " + score);
 
@@ -116,7 +115,7 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
 
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerView.setAdapter(adapter);
-        txtResult.setText(ListViewOptionActivity.getInstance().correct + " : " + ListViewOptionActivity.getInstance().wrong);
+        txtResult.setText(correct + " : " + wrong);
 
     }
 
@@ -132,7 +131,6 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
             Global.color=0;
             stop=0;
             btnNext.setBackgroundColor(Color.RED);
-            ListViewCategoryActivity.getInstance().pos = 0;
             prepareDisplay();
         }
 

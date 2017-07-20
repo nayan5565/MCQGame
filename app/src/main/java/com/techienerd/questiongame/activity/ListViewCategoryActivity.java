@@ -32,10 +32,8 @@ public class ListViewCategoryActivity extends AppCompatActivity implements View.
     MAllQuestion mAllQuestion;
     MQuestion mQuestion;
     MOption mOption;
-    private TextView txtCount;
-    private Button btnNext,btnStatistics;
-    public int pos,correct,wrong;
-    private TextView txtQues;
+    private Button btnStatistics;
+    public int pos;
     ListViewCategoryAdapter adapter;
     DatabaseHelper db;
     private static ListViewCategoryActivity instance;
@@ -66,22 +64,6 @@ public class ListViewCategoryActivity extends AppCompatActivity implements View.
         adapter = new ListViewCategoryAdapter(this);
         db=new DatabaseHelper(this);
     }
-
-//    public void prepareDisplay() {
-//        if (pos >= questionArrayList.size()) {
-//            Toast.makeText(this, "level completed", Toast.LENGTH_SHORT).show();
-//            pos = 0;
-//            return;
-//        } else {
-//            txtQues.setText(questionArrayList.get(pos).getQues());
-//            adapter.setData(questionArrayList.get(pos).getOptionArrayList());
-//            pos++;
-//        }
-////        txtCount.setText(CheckBoxCategoryAdapter.ca + " : " + CheckBoxCategoryAdapter.wa);
-//        adapter.notifyDataSetChanged();
-//        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
-//        recyclerView.setAdapter(adapter);
-//    }
 
     public void prepareView() {
         adapter.setQues(allQuestionArrayList);

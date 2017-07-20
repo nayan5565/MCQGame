@@ -28,8 +28,6 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
     private LayoutInflater inflater;
     private ArrayList<MOption> mItems;
     private MOption mItem;
-    private int color;
-    public static int wa, ca;
     View view;
 
 
@@ -81,7 +79,6 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                 @Override
                 public void onClick(View v) {
                     mItem = mItems.get(getAdapterPosition());
-                    ListViewCategoryActivity.getInstance().pos++;
                     Global.color = 1;
                     ListViewOptionActivity.getInstance().stop++;
                     ListViewOptionActivity.getInstance().colorChange();
@@ -89,18 +86,14 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
                     if (ListViewCategoryActivity.getInstance().pos > 1)
                         return;
                     if (mItem.getTag() == 1) {
-//                        textView.setTextColor(Color.GREEN);
                         ListViewOptionActivity.getInstance().correct++;
-                        Toast.makeText(context, "correct", Toast.LENGTH_SHORT).show();
                     } else {
                         mItem.setTag(2);
                         notifyDataSetChanged();
-//                        textView.setTextColor(Color.RED);
                         ListViewOptionActivity.getInstance().wrong++;
-                        Toast.makeText(context, "wrong", Toast.LENGTH_SHORT).show();
                     }
 
-                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewOptionActivity.getInstance().correct + " " + ListViewOptionActivity.getInstance().wrong);
+                    ListViewOptionActivity.getInstance().txtResult.setText(ListViewOptionActivity.getInstance().correct + " :  " + ListViewOptionActivity.getInstance().wrong);
                 }
             });
         }

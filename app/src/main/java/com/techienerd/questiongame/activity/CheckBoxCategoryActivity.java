@@ -29,7 +29,6 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
     MAllQuestion mAllQuestion;
     MQuestion mQuestion;
     MOption mOption;
-    private TextView txtCount;
     private Button btnStatistics;
     CheckBoxCategoryAdapter adapter;
     DatabaseHelper db;
@@ -53,7 +52,6 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
     private void init() {
         btnStatistics = (Button) findViewById(R.id.btnStatistics);
         btnStatistics.setOnClickListener(this);
-        txtCount = (TextView) findViewById(R.id.txtCount);
         recyclerView = (RecyclerView) findViewById(R.id.rec);
         mOption = new MOption();
         mQuestion = new MQuestion();
