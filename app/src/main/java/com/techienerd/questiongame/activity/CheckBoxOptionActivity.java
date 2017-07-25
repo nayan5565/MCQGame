@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
     private Handler handler;
     private MScore mScore;
     private DatabaseHelper db;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -52,6 +54,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
     }
 
     private void init() {
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         mScore = new MScore();
         index = getIntent().getIntExtra("index", 0);
         Global.parentId = getIntent().getIntExtra("parentId", 0);
@@ -89,6 +92,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
 
         if (pos >= CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size()) {
             Log.e("step", "one");
+            progressBar.setVisibility(View.GONE);
             final Dialog dialog = new Dialog(this);
             dialog.setCancelable(false);
 //            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -196,6 +200,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
                     txtWrong.setText(wrong + "");
 
                 }
+                progressBar.setProgress(count);
                 txtOptionChanged.setText(count + "");
                 if (pos >= CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size()) {
                     Log.e("position"," if"+pos);
