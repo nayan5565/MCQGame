@@ -253,28 +253,28 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         mCategory.setType("বাংলা প্রশ্ন");
         mCategory.setId(2);
 
-        mQuestion.setQues("২+২ =?");
+        mQuestion.setQues("BTRC-এর ইংরেজি পূর্নরুপ কোনটি?");
 
         mOption = new MOption();
-        mOption.setOption("২");
+        mOption.setOption("Bangladesh Telephone Regulatory Commission");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৭");
+        mOption.setOption("Bangladesh Telecom Regulatory Commission");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৮");
+        mOption.setOption("Bangladesh Telephone and Telegraph Regulatory Commission");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৪");
+        mOption.setOption("Bangladesh Telecommunication Regulatory Commission");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
@@ -287,28 +287,28 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
 
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
-        mQuestion.setQues("৫+৫=?");
+        mQuestion.setQues("বাংলাদেশ রেলওয়ের সর্ববৃহৎ কারখানা কোথায় ?");
 
         mOption = new MOption();
-        mOption.setOption("১০");
+        mOption.setOption("সৈয়দপুর ");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৯");
+        mOption.setOption("পাকশি ");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৫");
+        mOption.setOption("আখাউড়া ");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("১১");
+        mOption.setOption("চট্টগ্রাম");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -320,27 +320,27 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         //3
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
-        mQuestion.setQues("২+৫=?");
+        mQuestion.setQues(" বাংলাদেশের জাতিয় পতাকার দৈর্ঘ - প্রস্থের অনুপাত কোনটি ?");
         mOption = new MOption();
-        mOption.setOption("৯");
+        mOption.setOption("৮ ঃ ৫");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৭");
+        mOption.setOption("১০ ঃ ৬");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৫");
+        mOption.setOption("১১ ঃ ৮");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("১২");
+        mOption.setOption("১১ ঃ ৭ ");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -353,27 +353,27 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         //4
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
-        mQuestion.setQues("৭+২=?");
+        mQuestion.setQues("আটলান্টিক ও প্রশান্ত মহাসাগরকে যুক্ত করেছে কোনটি ?");
         mOption = new MOption();
-        mOption.setOption("৫");
+        mOption.setOption("সুয়েজ খাল");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৬");
+        mOption.setOption("মিসিসিপি");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("৯");
+        mOption.setOption("পানামা খাল");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("১০");
+        mOption.setOption("ভলগা");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
@@ -385,27 +385,86 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
 //5
         optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
-        mQuestion.setQues("৮+২=?");
+        mQuestion.setQues("পূর্বে কোন দেশটি শ্যামদেশ পরিচিত ছিল ?");
         mOption = new MOption();
-        mOption.setOption("১৬");
+        mOption.setOption("মালয়েশিয়া");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("১২");
+        mOption.setOption("ইন্দোনেশিয়া");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("১১");
+        mOption.setOption("মায়ানমার");
         mOption.setTag(0);
 
         optionArrayList.add(mOption);
 
         mOption = new MOption();
-        mOption.setOption("১০");
+        mOption.setOption("থাইল্যান্ড");
+        mOption.setTag(1);
+
+        optionArrayList.add(mOption);
+
+        mQuestion.setOptionArrayList(optionArrayList);
+
+        questionArrayList.add(mQuestion); optionArrayList = new ArrayList<>();
+        mQuestion = new MQuestion();
+        mQuestion.setQues("হাজার হ্রদের দেশ কোনটি ?");
+        mOption = new MOption();
+        mOption.setOption("নরওয়ে");
+        mOption.setTag(0);
+
+        optionArrayList.add(mOption);
+
+        mOption = new MOption();
+        mOption.setOption("ফিনল্যান্ড");
+        mOption.setTag(1);
+
+        optionArrayList.add(mOption);
+
+        mOption = new MOption();
+        mOption.setOption("জাপান");
+        mOption.setTag(0);
+
+        optionArrayList.add(mOption);
+
+        mOption = new MOption();
+        mOption.setOption("কোরিয়া");
+        mOption.setTag(0);
+
+        optionArrayList.add(mOption);
+
+        mQuestion.setOptionArrayList(optionArrayList);
+
+        questionArrayList.add(mQuestion);
+        optionArrayList = new ArrayList<>();
+        mQuestion = new MQuestion();
+        mQuestion.setQues("রেলপথে ঢাকা থেকে খুলনার দুরুত্ব কত ?");
+        mOption = new MOption();
+        mOption.setOption("৩৬০ কিমি");
+        mOption.setTag(0);
+
+        optionArrayList.add(mOption);
+
+        mOption = new MOption();
+        mOption.setOption("৪৮০ কিমি");
+        mOption.setTag(0);
+
+        optionArrayList.add(mOption);
+
+        mOption = new MOption();
+        mOption.setOption("৫২৯ কিমি");
+        mOption.setTag(0);
+
+        optionArrayList.add(mOption);
+
+        mOption = new MOption();
+        mOption.setOption("৬২৭ কিমি");
         mOption.setTag(1);
 
         optionArrayList.add(mOption);
