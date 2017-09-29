@@ -3,6 +3,7 @@ package com.techienerd.questiongame.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class CheckBoxCategoryAdapter extends RecyclerView.Adapter<CheckBoxCatego
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        Log.e("adapter"," take"+allQuestionArrayList.size());
         mAllQuestion = allQuestionArrayList.get(position);
         holder.textView.setText(mAllQuestion.getType());
 

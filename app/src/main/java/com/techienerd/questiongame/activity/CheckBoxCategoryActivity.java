@@ -7,11 +7,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.techienerd.questiongame.utils.DatabaseHelper;
 import com.techienerd.questiongame.R;
 import com.techienerd.questiongame.adapter.CheckBoxCategoryAdapter;
@@ -19,7 +23,13 @@ import com.techienerd.questiongame.model.MCategory;
 import com.techienerd.questiongame.model.MQuestion;
 import com.techienerd.questiongame.model.MOption;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import cz.msebera.android.httpclient.Header;
 
 public class CheckBoxCategoryActivity extends AppCompatActivity implements View.OnClickListener {
     RecyclerView recyclerView;
@@ -29,6 +39,7 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
     MCategory mCategory;
     MQuestion mQuestion;
     MOption mOption;
+    private Gson gson;
     private Button btnStatistics;
     CheckBoxCategoryAdapter adapter;
     DatabaseHelper db;
@@ -45,25 +56,54 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         setContentView(R.layout.activity_main);
         instance = this;
         init();
-        generateToMulti();
+//        generateToMulti();
+        getOnlineData();
         prepareView();
+
     }
 
     private void init() {
+        gson = new Gson();
         btnStatistics = (Button) findViewById(R.id.btnStatistics);
         btnStatistics.setOnClickListener(this);
         recyclerView = (RecyclerView) findViewById(R.id.rec);
         mOption = new MOption();
         mQuestion = new MQuestion();
+        categoryArrayList = new ArrayList<>();
         optionArrayList = new ArrayList<>();
         questionArrayList = new ArrayList<>();
         adapter = new CheckBoxCategoryAdapter(this);
-        db=new DatabaseHelper(this);
+        db = new DatabaseHelper(this);
     }
+
     public void prepareView() {
         adapter.setQues(categoryArrayList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+    }
+
+    public void getOnlineData() {
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.post("http://step2code.com/Nayan/question.php", new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                Log.e("data"," has "+response.toString());
+                super.onSuccess(statusCode, headers, response);
+                try {
+                    MCategory[] categories = gson.fromJson(response.getJSONArray("category").toString(), MCategory[].class);
+                    categoryArrayList = new ArrayList<MCategory>(Arrays.asList(categories));
+                    Log.e("data"," has "+categoryArrayList.size());
+                    prepareView();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+            }
+        });
     }
 
     private void generateToMulti() {
@@ -412,7 +452,8 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
 
         mQuestion.setOptionArrayList(optionArrayList);
 
-        questionArrayList.add(mQuestion); optionArrayList = new ArrayList<>();
+        questionArrayList.add(mQuestion);
+        optionArrayList = new ArrayList<>();
         mQuestion = new MQuestion();
         mQuestion.setQues("হাজার হ্রদের দেশ কোনটি ?");
         mOption = new MOption();
@@ -482,15 +523,15 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
 
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.btnStatistics){
-            Dialog dialog=new Dialog(this);
+        if (v.getId() == R.id.btnStatistics) {
+            Dialog dialog = new Dialog(this);
             dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dia_statistics);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.GREEN));
-            TextView txtEp=(TextView)dialog.findViewById(R.id.txtEP);
-            txtEp.setText(db.getBestScores(1)+"");
+            TextView txtEp = (TextView) dialog.findViewById(R.id.txtEP);
+            txtEp.setText(db.getBestScores(1) + "");
             TextView txtBp = (TextView) dialog.findViewById(R.id.txtBP);
-            txtBp.setText(db.getBestScores(2)+"");
+            txtBp.setText(db.getBestScores(2) + "");
             dialog.show();
 
         }

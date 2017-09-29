@@ -139,7 +139,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
         }
     }
 
-    public void addCheckbox(String text, final int id) {
+    public void addCheckbox(String text, final int pos) {
 
         final CheckBox checkBox = new CheckBox(this);
         checkBox.setText(text);
@@ -148,7 +148,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
             public void onClick(View v) {
                 isTrue = true;
                 btnNext.setBackgroundColor(0xff00ff00);
-                if (CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
+                if (CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(pos).getTag() == 1) {
                     correct++;
                     Toast.makeText(CheckBoxOptionActivity.this, "correct", Toast.LENGTH_SHORT).show();
                 } else {
@@ -160,7 +160,7 @@ public class CheckBoxOptionActivity extends AppCompatActivity implements View.On
                 }
                 txtCount.setText(correct + " : ");
                 txtWrong.setText(wrong + "");
-                if (checkBox.isChecked() && CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(id).getTag() == 1) {
+                if (checkBox.isChecked() && CheckBoxCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().get(pos).getOptionArrayList().get(pos).getTag() == 1) {
                     checkBox.setTextColor(Color.GREEN);
                 } else {
 
