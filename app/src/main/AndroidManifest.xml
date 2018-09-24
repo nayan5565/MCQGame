@@ -16,12 +16,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CheckBoxOptionActivity" />
-        <activity android:name=".activity.ListViewCategoryActivity" />
-        <activity android:name=".activity.ListViewOptionActivity" />
-        <activity android:name=".activity.CheckBoxCategoryActivity" />
-        <activity android:name=".activity.FavListActivity" />
-        <activity android:name=".activity.DataGetFavAcitivity" />
+        <activity android:name=".activity.CheckBoxOptionActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".activity.ListViewCategoryActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".activity.ListViewOptionActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".activity.CheckBoxCategoryActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".activity.FavListActivity"
+            android:screenOrientation="landscape"/>
+        <activity android:name=".activity.DataGetFavAcitivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

@@ -55,9 +55,9 @@ public class ListViewOptionAdapter extends RecyclerView.Adapter<ListViewOptionAd
         holder.textView.setText(mItem.getOption());
         if (Global.color == 1)
             if (mItem.getTag() == 1) {
-                holder.textView.setTextColor(Color.GREEN);
+                holder.textView.setBackgroundColor(Color.GREEN);
             } else if (mItem.getTag() == 2) {
-                holder.textView.setTextColor(Color.RED);
+                holder.textView.setBackgroundColor(Color.RED);
             }
 
     }
