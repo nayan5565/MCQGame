@@ -1,38 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".activity.StartActivity">
 
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_rounded"
-        android:text="নির্দেশিকা"
-        android:textColor="#ffffff" />
 
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_rounded"
-        android:text="খেলা শুরু"
-        android:textColor="#ffffff" />
+        <Button
+            android:id="@+id/btnDirection"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_rounded"
+            android:text="নির্দেশিকা"
+            android:textColor="#ffffff" />
 
-    <Button
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/btn_rounded"
-        android:text="সোর্বোচ্চ স্কোর "
-        android:textColor="#ffffff" />
+        <Button
+            android:id="@+id/btnStartPlay"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/btnDirection"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_rounded"
+            android:text="খেলা শুরু"
+            android:textColor="#ffffff" />
 
-</LinearLayout>
+        <Button
+            android:id="@+id/btnScore"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/btnStartPlay"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/btn_rounded"
+            android:text="সোর্বোচ্চ স্কোর "
+            android:textColor="#ffffff" />
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@id/linear"
+        android:text="এটি একটি কুইজ গেম যা আপনার জ্ঞান বৃদ্ধি করবে"
+        android:textSize="30sp" />
+
+</RelativeLayout>

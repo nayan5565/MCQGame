@@ -8,23 +8,23 @@ import android.widget.Button;
 
 import com.techienerd.questiongame.R;
 
-public class StartActivity extends AppCompatActivity implements View.OnClickListener {
+public class OptionActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button btnStartPlay;
+    private Button btnEasy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
-        btnStartPlay = findViewById(R.id.btnStartPlay);
-        btnStartPlay.setOnClickListener(this);
+        setContentView(R.layout.activity_option);
 
+        btnEasy = findViewById(R.id.btnEasy);
+        btnEasy.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.btnStartPlay) {
-            startActivity(new Intent(this, OptionActivity.class));
+        if (v.getId() == R.id.btnEasy) {
+            startActivity(new Intent(this, ListViewCategoryActivity.class));
             finish();
         }
     }
