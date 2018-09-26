@@ -22,10 +22,16 @@ public class OptionActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
+    @Override
     public void onClick(View v) {
         if (v.getId() == R.id.btnEasy) {
             startActivity(new Intent(this, ListViewCategoryActivity.class));
-            finish();
+
         }
     }
 }

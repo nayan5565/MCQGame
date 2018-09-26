@@ -49,13 +49,13 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
     public void init() {
         instance=this;
         Global.index=getIntent().getIntExtra("index",0);
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerList);
+        recyclerView =  findViewById(R.id.recyclerList);
         adapter = new ListViewOptionAdapter(this);
-        btnNext = (Button) findViewById(R.id.btnNx);
+        btnNext =  findViewById(R.id.btnNx);
         btnNext.setBackgroundColor(Color.RED);
         btnNext.setOnClickListener(this);
-        txtQues = (TextView) findViewById(R.id.txtQuestion);
-        txtResult = (TextView) findViewById(R.id.txtResult);
+        txtQues = findViewById(R.id.txtQuestion);
+        txtResult =  findViewById(R.id.txtResult);
         index = getIntent().getIntExtra("index", 0);
         Global.parentId = getIntent().getIntExtra("parentId", 0);
         parentId = Global.parentId;
@@ -78,9 +78,9 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
 //            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             dialog.setContentView(R.layout.dia_game_over);
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            Button btnOk = (Button) dialog.findViewById(R.id.btnOK);
-            final TextView txtMark = (TextView) dialog.findViewById(R.id.txtScore);
-            TextView txtBestScore = (TextView) dialog.findViewById(R.id.txtBestScore);
+            Button btnOk =  dialog.findViewById(R.id.btnOK);
+            final TextView txtMark =  dialog.findViewById(R.id.txtScore);
+            TextView txtBestScore =  dialog.findViewById(R.id.txtBestScore);
             bestScore = db.getBestScores(parentId);
             int score =correct * (100 / ListViewCategoryActivity.getInstance().categoryArrayList.get(index).getQuestionArrayList().size());
             if (score > bestScore) {
@@ -124,7 +124,6 @@ public class ListViewOptionActivity extends AppCompatActivity implements View.On
 
         if (stop==0)
             return;
-
 
 
         if (v.getId()==R.id.btnNx){

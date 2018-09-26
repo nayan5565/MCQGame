@@ -25,7 +25,7 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v.getId() == R.id.btnStartPlay) {
             startActivity(new Intent(this, OptionActivity.class));
-            finish();
+
         }
     }
 }
