@@ -56,8 +56,8 @@ public class CheckBoxCategoryActivity extends AppCompatActivity implements View.
         setContentView(R.layout.activity_main);
         instance = this;
         init();
-//        generateToMulti();
-        getOnlineData();
+        generateToMulti();
+//        getOnlineData();
         prepareView();
 
     }
